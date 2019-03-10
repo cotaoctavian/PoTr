@@ -1,7 +1,7 @@
 # PoTr-Poem-Translater
 
   ### TO DO LIST:
-  - [ ] MENU
+  - [x] MENU
   - [ ] PAGINA PRINCIPALA
   - [ ] POEME
   - [ ] DESPRE NOI
