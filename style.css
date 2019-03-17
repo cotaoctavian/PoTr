@@ -139,10 +139,7 @@ body{
 
 #accordion > div > input:checked + label {
 	background: #ccc;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 	color: white;
-	margin-bottom: 0;
 }
 
 #accordion .verse-details {
@@ -349,4 +346,26 @@ body{
 
 #no-link{
     text-decoration: none;
+}
+
+/* Share container */
+
+#share-container{
+    width:25%;
+    text-align:center;
+    margin:auto;
+}
+
+#share-container h1{
+    font-family: 'Titillium Web', sans-serif;
+    font-size:15px
+}
+
+#share-container a{
+    text-decoration: none;
+}
+
+#share-container img{
+    width:10%;
+    height:10%;
 }
