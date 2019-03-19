@@ -426,6 +426,113 @@
     color:blue
 }
 
+#main-table{
+    border: 1px solid gray;
+    margin:auto;
+    height:50%;
+    width:50%;
+    border-radius:5px;
+    margin-top:3%;
+    margin-bottom:3%;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#rss-table{
+    border-bottom:1px solid gray;
+    display:grid;
+    grid-template-columns: 1fr;
+}
+
+#antet-table{
+    background-color:#FFF666;
+    display: grid;
+    padding-left:2%;
+    grid-template-columns: 0.25fr 0.5fr 1.5fr;
+    margin:0;
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px;
+}
+
+#rss-table a{
+    text-decoration: none;
+    color: black;
+    border-bottom:1px solid gray;
+}
+
+#rss-table a:last-child{
+    border:0;
+}
+
+#line-table{
+    padding: 2% 2%;
+    display: grid;
+    grid-template-columns: 0.2fr 1.5fr 1fr 0.7fr; 
+    align-items: center;
+
+}
+
+#line-table:hover{
+    background-color:#e6e6e6;
+}
+
+#two-lines {
+     display: grid;
+     grid-template-rows: 1fr; 
+}
+
+#line-table>span{
+    font-size: 17px;
+}
+
+#two-lines span:first-child{
+    font-size:20px;
+} 
+
+.hr2{
+    width:60%;
+    align-content:center;
+    border:1px solid black;
+    border-radius:50%;
+}
+
+.main-img {
+    height: 15%;
+    width: 15%;
+    vertical-align: middle;
+}
+
+#banner {
+   font-size: 60px;
+   margin-top: 5%;
+   font-family:'Monoton', cursive;
+   margin-bottom:0%;
+    text-align: center;
+}
+
+
+#h5{
+    font-size:25px;
+    font-family:'Titillium Web', sans-serif;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+}
+
+#logo-poetry{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+.poetry-img {
+    height: 5%;
+    width: 40%;
+    margin-top:0%; 
+}
+#background{
+    background-color: #ffffcc;
+}
+
 .nav{
     background-color:#000;
     width:100%;
