@@ -4,7 +4,7 @@
   - [x] MENU
   - [ ] PAGINA PRINCIPALA
   - [x] LISTA POEME (TABEL)
-  - [ ] DESPRE NOI
+  - [x] DESPRE NOI
   - [x] SIGN IN
   - [x] SIGN UP
   - [ ] TABEL RSS
