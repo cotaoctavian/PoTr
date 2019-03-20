@@ -713,3 +713,23 @@ body {
 	background-color: ghostwhite;
 	margin: 0;
 }
+
+@media screen and (max-width: 800px){
+    
+    #banner{
+        font-size:40px;
+    }
+    
+    #h5{
+        font-size:15px;
+    }
+    
+    nav.menu-bar > a {
+        font-size:15px;
+        padding-top:2%;
+    }
+    
+    #main-table{
+        width:80%;
+    }
+}
