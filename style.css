@@ -67,7 +67,7 @@
 	width: 70%;
 }
 
-#about-us-container p {
+#about-us-container > p {
 	padding-left: 5%;
 	padding-right: 5%;
 	text-align: center;
@@ -731,5 +731,36 @@ body {
     
     #main-table{
         width:80%;
+    }
+    
+    #contact {
+        width:100%;
+        font-size:13px;
+    }
+    
+    #about-us-container{
+        width:100%;
+    }
+    
+    div.poem-container{
+        flex-direction: column;
+        align-items:stretch;
+    }
+    
+    div.comment-main{
+        left:5%;
+        width:90%;
+    }
+}
+
+@media screen and (max-width: 1232px){
+    #contact {
+        width:100%;
+    }
+}
+
+@media screen and (max-width: 1350px){
+    div.poem-container{
+        width:100%;
     }
 }
