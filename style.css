@@ -661,12 +661,14 @@
 	background-color: #ffc;
 }
 
-.nav {
+.menu-bar {
 	background-color: #000;
 	height: 2.5em;
 	padding-top: 0.3%;
-	text-align: center;
 	width: 100%;
+   	 display:flex;
+   	 flex-direction: row;
+    	justify-content: center;
 }
 
 .nav1 {
