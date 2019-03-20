@@ -319,17 +319,14 @@
 }
 
 .table {
-	border: 1px solid black;
-	display: flex;
-	flex-direction: column;
-	height: 70%;
-	left: 39%;
-	padding-left: 75px;
-	padding-right: 75px;
-	padding-top: 50px;
-	position: absolute;
-	top: 20%;
-	width: 15%;
+    border: 1px solid black;
+    border-radius:5px;
+    width: 25%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto;
+    margin-top:7%;
 }
 
 .block-sign-up {
@@ -337,9 +334,21 @@
 	border-radius: 5px;
 	font-family: 'Titillium Web', sans-serif;
 	height: 7%;
-	padding-top: 5px;
+	padding-top: 2%;
 	text-align: center;
-	width: 100%;
+        margin-left:15%;
+	width: 65%;
+}
+
+.block-sign-in {
+	border: 1px solid black;
+	border-radius: 5px;
+	font-family: 'Titillium Web', sans-serif;
+	height: 7%;
+	padding-top: 2%;
+	text-align: center;
+        margin-left:15%;
+	width: 65%;
 }
 
 .button-sign-up {
@@ -348,23 +357,23 @@
 	color: #fff;
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 16px;
-	left: 39%;
 	padding: 5px 25px;
-	position: absolute;
 	text-align: center;
-	top: 60%;
+       margin-top:3%;
+       margin-left:35%;
+       margin-bottom: 3%;
 }
 
 .button-sign-in {
-	background-color: #42a1f4;
+ 	background-color: #42a1f4;
 	border-radius: 5px;
 	color: #fff;
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 16px;
-	left: 37%;
 	padding: 5px 25px;
-	position: absolute;
-	top: 40%;
+    	margin-top:10%;
+    	margin-left:35%;
+    	margin-bottom: 5%;
 }
 
 .table p {
@@ -450,8 +459,7 @@
 	position: relative;
 }
 
-.block-reset-pass,
-.block-sign-in {
+.block-reset-pass {
 	border: 1px solid black;
 	border-radius: 5px;
 	font-family: 'Titillium Web', sans-serif;
