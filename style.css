@@ -330,13 +330,13 @@
 }
 
 .block-sign-up {
-	border: 1px solid black;
+    border: 1px solid black;
 	border-radius: 5px;
 	font-family: 'Titillium Web', sans-serif;
 	height: 7%;
 	padding-top: 2%;
 	text-align: center;
-        margin-left:15%;
+    margin-left:15%;
 	width: 65%;
 }
 
@@ -347,7 +347,7 @@
 	height: 7%;
 	padding-top: 2%;
 	text-align: center;
-        margin-left:15%;
+    margin-left:15%;
 	width: 65%;
 }
 
@@ -359,9 +359,9 @@
 	font-size: 16px;
 	padding: 5px 25px;
 	text-align: center;
-       margin-top:3%;
-       margin-left:35%;
-       margin-bottom: 3%;
+    margin-top:3%;
+    margin-left:37%;
+    margin-bottom: 3%;
 }
 
 .button-sign-in {
@@ -371,15 +371,16 @@
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 16px;
 	padding: 5px 25px;
-    	margin-top:10%;
-    	margin-left:35%;
-    	margin-bottom: 5%;
+    margin-top:10%;
+    margin-left:35%;
+    margin-bottom: 5%;
 }
 
 .table p {
 	font-family: 'Titillium Web', sans-serif;
 	font-weight: 700;
 	margin-bottom: 5px;
+    margin-left:15%;
 }
 
 .text {
@@ -391,8 +392,6 @@
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 30px;
 	font-weight: 700;
-	margin: 0;
-	padding: 0 0 20px;
 	text-align: center;
 }
 
@@ -400,8 +399,7 @@
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 15px;
 	margin-top: 20%;
-    padding-left:16%;
-	position: absolute;
+    padding-left:33%;
 	text-decoration: none;
 }
 
@@ -463,10 +461,11 @@
 	border: 1px solid black;
 	border-radius: 5px;
 	font-family: 'Titillium Web', sans-serif;
-	height: 10%;
-	padding-top: 5px;
+	height: 7%;
+	padding-top: 2%;
 	text-align: center;
-	width: 100%;
+    margin-left:15%;
+	width: 65%;
 }
 
 .button-reset-pass {
@@ -475,11 +474,10 @@
 	color: #fff;
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 16px;
-	left: 27%;
 	padding: 5px 25px;
-	position: absolute;
-	text-align: center;
-	top: 75%;
+    margin-top:10%;
+    margin-left:32%;
+    margin-bottom: 5%;
 }
 
 .table-summary {
