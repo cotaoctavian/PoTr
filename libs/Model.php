@@ -1,6 +1,6 @@
 <?php
 
-require_once 'libs/Database.php';
+require_once 'classes/Database.php';
 
 Database::instance();
 

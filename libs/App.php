@@ -13,6 +13,7 @@ class App{
             require_once 'controllers/IndexController.php';
             $controller = new Index();
             $controller->index();
+            return false;
         } else {
             $file = 'controllers/' . $url[0] . 'Controller.php';
             if (file_exists($file)) {
@@ -27,7 +28,12 @@ class App{
                 $controller->{$url[1]}($url[2]);
             } else {
                 if (isset($url[1])) {
-                    $controller->{$url[1]}();
+                    if(method_exists($controller, $url[1])) {
+                        $controller->{$url[1]}();
+                    }
+                    else{
+                        echo 'Invalid method!';
+                    }
                 }
                 else if(!isset($url[1])){
                     $controller->index();
