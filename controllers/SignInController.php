@@ -13,4 +13,7 @@ class SignIn extends Controller{
         $this->view->render('signin/index');
     }
 
+    function login(){
+        $this->model->login();
+    }
 }

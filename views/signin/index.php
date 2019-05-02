@@ -23,7 +23,7 @@
 </nav>
 <div class="table">
     <h1>Sign In</h1>
-    <form>
+    <form  action="signin/login" method="POST" >
         <p> Username:</p>
         <input type="text" name="username" placeholder="Enter Username" class ="block-sign-in">
         <p> Password: </p>

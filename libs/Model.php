@@ -2,9 +2,11 @@
 
 require_once 'classes/Database.php';
 
-Database::instance();
 
-abstract class Model
+
+class Model
 {
-    abstract function __construct();
+    function __construct(){
+            $this->db=Database::instance();
+    }
 }
