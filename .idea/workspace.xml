@@ -134,7 +134,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="432" />
     <option name="width" value="974" />
     <option name="height" value="788" />
@@ -279,15 +279,23 @@
       <workItem from="1556694401805" duration="11066000" />
       <workItem from="1556706749818" duration="11000" />
       <workItem from="1556706761778" duration="1291000" />
-      <workItem from="1556783493862" duration="11950000" />
+      <workItem from="1556783493862" duration="12260000" />
     </task>
+    <task id="LOCAL-00001" summary="Session+Updating Model+SignInModel+DashboardView+DashboardController+DashboardModel">
+      <created>1556795679787</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556795679787</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36732000" />
+    <option name="totallyTimeSpent" value="37042000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21255673" />
@@ -336,6 +344,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Session+Updating Model+SignInModel+DashboardView+DashboardController+DashboardModel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Session+Updating Model+SignInModel+DashboardView+DashboardController+DashboardModel" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/models/Homepage.php" />

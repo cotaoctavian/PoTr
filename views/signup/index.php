@@ -11,7 +11,7 @@
 
 <body>
 <nav class = "nav1">
-    <a class = "a1" href = index"> Poem translater </a>
+    <a class = "a1" href = "index"> Poem translater </a>
     <a href = "signin" class = "sign-in-up-position"> SIGN IN </a>
     <a href = "signup" class = "sign-in-up-position"> SIGN UP </a>
 </nav>
