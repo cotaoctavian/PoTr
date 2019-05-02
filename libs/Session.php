@@ -19,4 +19,5 @@ class Session{
         //unset($_SESSION);
         session_destroy();
     }
+
 }

@@ -67,7 +67,7 @@
     width: 70%;
 }
 
-#about-us-container p {
+#about-us-container p, #profile-container p {
     padding-left: 5%;
     padding-right: 5%;
     text-align: center;
@@ -238,13 +238,13 @@
 .comment,
 .comment-main {
     border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    left: 25.8%;
-    margin-top: 1%;
     padding-left: 0.5%;
-    position: relative;
     width: 48%;
+    display:flex;
+    flex-direction:column;
+    border-radius:5px;
+    margin:auto;
+    margin-bottom:2%;
 }
 
 .comment-title {
@@ -253,7 +253,7 @@
     padding-left: 1%;
 }
 
-.comment-icon {
+.comment-icon  {
     height: 2%;
     width: 2%;
 }
@@ -277,6 +277,7 @@
     margin-bottom: 0.5%;
     margin-right: 1%;
     width: auto;
+    padding-bottom:3%;
 }
 
 .grid {
@@ -674,8 +675,8 @@
 .nav1 {
     background-color: #FFF666;
     display: inline-block;
-    height: 2.5em;
-    padding-top: 0.3%;
+    height: 3.0em;
+    padding-top: 0.5%;
     text-align: center;
     width: 100%;
 }
@@ -684,7 +685,7 @@
     color: #000;
     font-family: 'Monoton', cursive;
     font-size: 20px;
-    margin-left: 7%;
+    margin-left: 9%;
     text-align: center;
     text-decoration: none;
 }
@@ -709,6 +710,84 @@
     margin: 0.3%;
     padding-right: 0.5%;
     text-decoration: none;
+}
+
+/* PROFIL */
+#profile-container{
+    background-color: #FFF999;
+    border-radius: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    height: 60%;
+    margin: auto;
+    margin-top: 2.5%;
+    padding: 1%;
+    text-align: center;
+    width: 40%;
+}
+
+#profile-picture{
+    width:45px;
+    height:45px;
+    float: right;
+    border-radius: 100%;
+    margin-right:0.5%;
+}
+
+.table-profile {
+    border: 1px solid black;
+    border-radius:5px;
+    width: 40%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto;
+}
+
+.fields {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    padding-top: 2%;
+    text-align: center;
+    margin-left:5%;
+    width: 65%;
+}
+
+.button-profile-pass {
+    background-color: black;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    padding: 5px 25px;
+    margin-top:10%;
+    margin-left:5%;
+    margin-bottom: 5%;
+}
+
+
+.bio-section {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 99%;    margin-bottom: 1%;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+
+}
+
+.comment-profile-icon  {
+    height: 4%;
+    width: 4%;
+}
+
+.block-bio {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Titillium Web', sans-serif;
+    height: 7%;
+    padding-top: 2%;
+    text-align: center;
+    width: 99%;
 }
 
 body {

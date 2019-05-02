@@ -9,11 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+<?php Session::init(); ?>
 <body>
 <nav class = "nav1">
     <a class = "a1" href = "index"> Poem translater </a>
-    <a href = "signin" class = "sign-in-up-position"> SIGN IN </a>
-    <a href = "signup" class = "sign-in-up-position"> SIGN UP </a>
+    <?php
+    if(Session::get('loggedIn')==true):  ?>
+        <a href="<?php echo URL ;?>dashboard/logout" class = "sign-in-up-position"> SIGN OUT </a>
+        <a href = "profile" class = "sign-in-up-position"> <?php echo Session::get('username') ?> </a>
+        <img src = "<?php echo Session::get('photo') ?>" alt ="" id = "profile-picture" />
+    <?php else: ?>
+        <a href = "signin" class = "sign-in-up-position"> SIGN IN </a>
+        <a href = "signup" class = "sign-in-up-position"> SIGN UP </a>
+    <?php endif; ?>
 </nav>
 
 <nav class = "menu-bar">
