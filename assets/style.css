@@ -853,6 +853,12 @@ body {
     }
 }
 
+@media screen and (max-width: 870px) {
+    input.button-reset-pass{
+        margin-left:18%;
+    }
+}
+
 @media screen and (max-width: 812px){
     div.table-summary{
         width:16%;
@@ -860,13 +866,16 @@ body {
     div.table-active-users, div.table-most-comment{
         width:57%;
     }
-    input.button-reset-pass{
-        margin-left:18%;
+
+    #line-table > span:nth-child(3){
+        font-size:80%;
+    }
+    #line-table > span:nth-child(4){
+        font-size:80%;
     }
 
-    div.rss-table{
-        width:80%;
-        font-size:10px;
+    #two-lines > span:nth-child(1){
+        font-size:90%;
     }
 }
 
@@ -874,14 +883,33 @@ body {
     input.button-reset-pass{
         margin-left:14%;
     }
+    #main-table{
+        height: 60%;
+        margin: auto;
+        width: 60%;
+    }
+
+    #line-table > span:nth-child(3){
+        font-size:85%;
+    }
+    #line-table > span:nth-child(4){
+        font-size:85%;
+    }
+
 }
 
 @media screen and (max-width: 650px){
     div.table-summary{
         width:20%;
+        margin-left:40%;
+        border-bottom: 1px solid black;
+        border-right: none;
     }
+
     div.table-poems{
         width:50%;
+        position: relative;
+        margin-top:10%;
     }
 
     div.table-active-users, div.table-most-comment{
@@ -899,17 +927,54 @@ body {
     input.button-reset-pass{
         margin-left:20%;
     }
+    #main-table{
+        height: 70%;
+        margin: auto;
+        width: 70%;
+    }
+
+    #line-table > span:nth-child(3){
+        font-size:90%;
+    }
+    #line-table > span:nth-child(4){
+        font-size:90%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    input.button-reset-pass{
+        margin-left:15%;
+    }
+}
+@media screen and (max-width: 570px) {
+    #main-table{
+        height: 75%;
+        margin: auto;
+        width: 75%;
+    }
+
+    #line-table > span:nth-child(3){
+        font-size:80%;
+    }
+    #line-table > span:nth-child(4){
+        font-size:80%;
+    }
+
 }
 
 @media screen and (max-width: 526px){
+
     div.table-summary{
-        width:25%;
+        width:30%;
+        padding-left:10%;
+        margin-left:30%;
+
     }
 
     div.table-poems{
-        margin-left:5%;
-        margin-top:9%;
+       left:27%;
     }
+
     div.table-active-users, div.table-most-comment{
         width:70%;
         left:15%;
@@ -919,6 +984,17 @@ body {
     div.table{
         width: 50%;
     }
+
+    input.button-reset-pass{
+        margin-left:18%;
+    }
+}
+@media screen and (max-width: 480px){
+    #main-table{
+        height: 83%;
+        margin: auto;
+        width: 83%;
+    }
 }
 
 @media screen and (max-width: 470px){
@@ -927,20 +1003,36 @@ body {
         font-size:87%;
         left:8%;
     }
+
+    div.table-poems{
+       width:65%;
+        left:17%;
+    }
 }
 @media screen and (max-width: 455px){
     input.button-reset-pass{
         margin-left:15%;
     }
-}
-@media screen and (max-width: 420px){
-    div.table-active-users, div.table-most-comment{
-        width:80%;
-        font-size:80%;
-        left:1%;
+
+     input.button-sign-up{
+        margin-left:26%;
     }
 }
 
+@media screen and (max-width: 430px){
+    #main-table{
+        height: 90%;
+        margin: auto;
+        width: 90%;
+    }
+
+    #line-table > span:nth-child(3){
+        font-size:75%;
+    }
+    #line-table > span:nth-child(4){
+        font-size:75%;
+    }
+}
 
 @media screen and (max-width: 426px){
     div.table-summary{
@@ -951,11 +1043,16 @@ body {
         margin-top:11%;
     }
     div.table-active-users, div.table-most-comment{
-        width:95%;
-        margin-left:2%;
+        width:80%;
+        font-size:80%;
+        left:1%;
     }
 
     div.table{
         width: 65%;
+    }
+
+    input.button-reset-pass{
+        margin-left:20%;
     }
 }
