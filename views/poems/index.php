@@ -33,25 +33,14 @@
 
 <div class="table-summary">
 
-    <a href="poems.html">Mihai Eminescu</a>
-    <a href="bacovia.html" >George Bacovia</a>
-    <a href="cazimir.html">Otilia Cazimir</a>
-    <a href="arghezi.html">Tudor Arghezi</a>
-    <a href="cosbuc.html">George Cosbuc</a>
+    <a href="#" ></a>
 </div>
 <div class="table-poems">
-    <p> #</p>
-    <p>Mihai Eminescu</p>
-    <span> 1</span>
-    <a href="#5"> Sara pe deal</a>
-    <span> 2</span>
-    <a href="#2" >Lacul</a>
-    <span> 3</span>
-    <a href="#3"> Dorinta</a>
-    <span> 4</span>
-    <a href="#4">Floare Albastra</a>
-    <span> 5</span>
-    <a href="#1">Somnoroase pasarele</a>
+    <p> </p>
+    <p></p>
+    <span> </span>
+    <a href="#"> </a>
+
 
 </div>
 </body>

@@ -853,6 +853,7 @@ body {
         width: 30%;
     }
 }
+
 @media screen and (max-width: 812px){
     div.table-summary{
         width:16%;
@@ -862,6 +863,11 @@ body {
     }
     input.button-reset-pass{
         margin-left:18%;
+    }
+
+    div.rss-table{
+        width:80%;
+        font-size:10px;
     }
 }
 
@@ -881,7 +887,7 @@ body {
 
     div.table-active-users, div.table-most-comment{
         width:70%;
-        margin-left:15%;
+        left:17%;
     }
     h2, h3 {
         padding-left:0%;
@@ -906,8 +912,9 @@ body {
         margin-top:9%;
     }
     div.table-active-users, div.table-most-comment{
-        width:90%;
-        margin-left:5%;
+        width:70%;
+        left:15%;
+        font-size:75%;
     }
 
     div.table{
@@ -915,11 +922,26 @@ body {
     }
 }
 
+@media screen and (max-width: 470px){
+    div.table-active-users, div.table-most-comment{
+        width:80%;
+        font-size:87%;
+        left:8%;
+    }
+}
 @media screen and (max-width: 455px){
     input.button-reset-pass{
         margin-left:15%;
     }
 }
+@media screen and (max-width: 420px){
+    div.table-active-users, div.table-most-comment{
+        width:80%;
+        font-size:80%;
+        left:1%;
+    }
+}
+
 
 @media screen and (max-width: 426px){
     div.table-summary{
