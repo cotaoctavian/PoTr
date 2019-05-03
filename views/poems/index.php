@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Poems</title>
@@ -12,38 +12,50 @@
 <?php Session::init() ?>
 
 <body>
-<nav class = "nav1">
-    <a class = "a1" href = "index"> Poem translater </a>
+<nav class="nav1">
+    <a class="a1" href="index"> Poem translater </a>
     <?php
-    if(Session::get('loggedIn')==true):  ?>
-        <a href="<?php echo URL ;?>dashboard/logout" class = "sign-in-up-position"> SIGN OUT </a>
-        <a href = "profile"" class = "sign-in-up-position"> <?php echo Session::get('username') ?> </a>
-        <img src = "<?php echo Session::get('photo') ?>" alt ="" id = "profile-picture"/>
+    if (Session::get('loggedIn') == true): ?>
+        <a href="<?php echo URL; ?>../../dashboard/logout" class="sign-in-up-position"> SIGN OUT </a>
+        <a href="../../profile"" class = "sign-in-up-position"> <?php echo Session::get('username') ?> </a>
+        <img src="../../<?php echo Session::get('photo') ?>" alt="" id="profile-picture"/>
     <?php else: ?>
-        <a href = "signin" class = "sign-in-up-position"> SIGN IN </a>
-        <a href = "signup" class = "sign-in-up-position"> SIGN UP </a>
+        <a href="../../signin" class="sign-in-up-position"> SIGN IN </a>
+        <a href="../../signup" class="sign-in-up-position"> SIGN UP </a>
     <?php endif; ?>
 </nav>
 
-<nav class = "menu-bar">
-    <a href = "poems"> POEMS! </a>
-    <a href = "community"> COMMUNITY </a>
-    <a href = "aboutus"> ABOUT US! </a>
+<nav class="menu-bar">
+    <a href="../../poems"> POEMS! </a>
+    <a href="../../community"> COMMUNITY </a>
+    <a href="../../aboutus"> ABOUT US! </a>
 </nav>
 
 <div class="table-summary">
-    <a href="bacovia.html" >George Bacovia</a>
-    <a href="poems.html">Mihai Eminescu</a>
-    <a href="cazimir.html">Otilia Cazimir</a>
-    <a href="arghezi.html">Tudor Arghezi</a>
-    <a href="cosbuc.html">George Cosbuc</a>
+    <?php
+    foreach ($this->authorData as $var) {
+        echo "<a href='../../poems/authorsPoem/" . $var['id'] . "'> " . $var['nume'] . " </a>";
+    }
+    ?>
+</div>
+
 </div>
 <div class="table-poems">
-    <p> #</p>
-    <p>George Bacovia</p>
-    <span> 1</span>
-    <a href="/poem"> Plumb </a>
-
+    <p>#</p>
+    <?php
+    foreach ($this->poemData as  $var) {
+        echo '<p>' . $var['nume'] . '</p>';
+        break;
+    }
+    ?>
+    <?php
+    $cnt=1;
+    foreach ($this->poemData as  $val){
+        echo '<span>'.$cnt.' </span>';
+        echo '<a href="../../poem">'. $val['titlu'] .'</a>';
+        $cnt++;
+    }
+    ?>
 
 </div>
 </body>

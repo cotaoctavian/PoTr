@@ -25,7 +25,7 @@
 </nav>
 
 <nav class = "menu-bar">
-    <a href = "poems" > POEMS! </a>
+    <a href = "poems/authorsPoem/1" > POEMS! </a>
     <a href = "community" > COMMUNITY </a>
     <a href = "aboutus"> ABOUT US! </a>
 </nav>
