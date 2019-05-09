@@ -13,4 +13,8 @@ class SignUp extends Controller{
         $this->view->render('signup/index');
     }
 
+    function register(){
+        $this->model->register();
+    }
+
 }
