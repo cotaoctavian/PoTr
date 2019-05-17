@@ -57,4 +57,9 @@ class Profile extends Controller{
         }
     }
 
+    function changePass(){
+        $this->model->changePass();
+    }
+
+
 }

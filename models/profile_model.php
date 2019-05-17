@@ -60,4 +60,21 @@ class Profile_Model extends Model {
             echo 'EROARE!';
         }
     }
+
+    public function changePass(){
+        if (strcmp($_POST['parola'], $_POST['pass']) == 0) {
+            $sth = $this->db->prepare("UPDATE user set parola=:parola WHERE email=:email");
+            $sth->execute(array(
+                ':parola' => $_POST['parola'],
+                ':email' => $_POST['email']
+            ));
+
+            $count=$sth->rowCount();
+            if($count>0){
+                header('location:../profile');
+            }
+            else echo "Eroare la resetare parola!";
+        }
+        else echo "Parolele nu se potrivesc!";
+    }
 }

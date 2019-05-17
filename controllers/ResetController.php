@@ -13,4 +13,8 @@ class Reset extends Controller{
         $this->view->render('reset/index');
     }
 
+    function changePassword(){
+        $this->model->changePassword();
+    }
+
 }

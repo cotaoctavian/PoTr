@@ -41,13 +41,13 @@
 
     <h3> Resetare parolă: </h3>
     <div class="table-profile">
-        <form>
+        <form action="profile/changePass" method="post">
             <p>E-mail:</p>
-            <input type="text" placeholder="Enter E-mail" class = "fields">
+            <input type="text" name="email" placeholder="Enter E-mail" class = "fields">
             <p> Password: </p>
-            <input type="password" placeholder="Enter Password" class = "fields">
+            <input type="password" name="parola" placeholder="Enter Password" class = "fields">
             <p> Repetă parola: </p>
-            <input type="password"  placeholder="Enter Password"  class = "fields">
+            <input type="password"  name="pass" placeholder="Enter Password"  class = "fields">
             <input type="submit" value="Reset password"  class = "button-profile-pass"/><br>
         </form>
     </div>

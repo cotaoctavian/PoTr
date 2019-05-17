@@ -31,14 +31,15 @@
     <a href = "aboutus"> ABOUT US! </a>
 </nav>
 <div class="table">
-    <form>
+    <form  action="reset/changePassword" method="post">
         <h1>Reset your password</h1>
         <p>E-mail:</p>
-        <input type="text" placeholder="Enter E-mail" class = "block-reset-pass">
+        <input type="text" name="email" placeholder="Enter E-mail" class = "block-reset-pass">
         <p> Password: </p>
-        <input type="password" placeholder="Enter Password" class = "block-reset-pass">
-        <p> Repeat your Password: </p>  <input type="password"  placeholder="Enter Password"   class = "block-reset-pass">
-        <input type="submit" value="Reset password"  class = "button-reset-pass"/><br>
+        <input type="password"  name="parola" placeholder="Enter Password" class = "block-reset-pass">
+        <p> Repeat your Password: </p>
+        <input type="password"  name="pass" placeholder="Enter Password"   class = "block-reset-pass">
+        <input type="submit" name="sendmail" value="Reset password"  class = "button-reset-pass"/><br>
     </form>
 </div>
 

@@ -24,17 +24,17 @@
 
 <div class="table">
     <h1>Sign Up</h1>
-    <form>
+    <form  action ="signup/register" method="POST" >
         <p>E-mail:</p>
-        <input type="text" placeholder="Enter E-mail" class = "block-sign-up">
+        <input type="text" name="email" placeholder="Enter E-mail" class = "block-sign-up">
         <p> Username:</p>
-        <input type="text" placeholder="Enter Username"
+        <input type="text" name="username" placeholder="Enter Username"
                class = "block-sign-up">
         <p> Password: </p>
-        <input type="password" placeholder="Enter Password"
+        <input type="password"  name= "parola" placeholder="Enter Password"
                class = "block-sign-up">
         <p> Repeat your Password: </p>
-        <input type="password"  placeholder="Enter Password"
+        <input type="password" name="pass" placeholder="Enter Password"
                class = "block-sign-up">
         <input type="submit" value="Sign Up"
                class = "button-sign-up"/><br>
