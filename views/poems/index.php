@@ -13,7 +13,7 @@
 
 <body>
 <nav class="nav1">
-    <a class="a1" href="index"> Poem translater </a>
+    <a class="a1" href="../../../index"> Poem translater </a>
     <?php
     if (Session::get('loggedIn') == true): ?>
         <a href="<?php echo URL; ?>../../dashboard/logout" class="sign-in-up-position"> SIGN OUT </a>
@@ -52,7 +52,7 @@
     $cnt=1;
     foreach ($this->poemData as  $val){
         echo '<span>'.$cnt.' </span>';
-        echo '<a href="../../poem">'. $val['titlu'] .'</a>';
+        echo '<a href="../../poem/poezie/'.$var['id_autor'].'/'.$val['titlu'].'/english">'. $val['titlu'] .'</a>';
         $cnt++;
     }
     ?>

@@ -285,6 +285,12 @@
     margin-top: 2%;
 }
 
+.grid-comm {
+    display: grid;
+    grid-template-rows: 1fr;
+    margin-top: 2%;
+}
+
 .grid>span {
     border-bottom: 1px solid black;
     border-left: 1px solid black;
@@ -296,26 +302,25 @@
     flex-direction: column;
 }
 
-#share-container {
-    margin: auto;
-    margin-bottom: 5%;
+#table-share {
+    margin: auto auto 5%;
     text-align: center;
     width: 25%;
 }
 
-#share-container h1 {
+#table-share h1{
     font-family: 'Titillium Web', sans-serif;
     font-size: 15px;
 }
 
-#share-container a,
+#table-share a,
 #no-link {
     text-decoration: none;
 }
 
-#share-container img {
-    height: 10%;
-    width: 10%;
+.img-share{
+    width:10%;
+    height:10%;
 }
 
 .table {
@@ -325,8 +330,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    margin: auto;
-    margin-top:7%;
+    margin: 7% auto auto;
 }
 
 .block-sign-up {

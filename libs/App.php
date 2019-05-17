@@ -24,8 +24,9 @@ class App
             }
 
             $controller = new $url[0];
-
-            if (isset($url[3])) {
+            if(isset($url[4])){
+                $controller->{$url[1]}($url[2], $url[3], $url[4]);
+            } else if (isset($url[3])) {
                 $controller->{$url[1]}($url[2], $url[3]);
             } else if (isset($url[2])) {
                 $controller->{$url[1]}($url[2]);

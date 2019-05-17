@@ -1,0 +1,9 @@
+{
+    "access_token": "xCLVc^1dgI**nRrHwsq2w6tlVPYgFH^Q^kJY9rm4b^x!n$vkK)A*zwL@nC1o#K8i",
+    "token_type": "bearer",
+    "blog_id": "162185500",
+    "blog_url": "http://potrbloghome.wordpress.com",
+    "scope": ""
+}
+
+https://public-api.wordpress.com/oauth2/authorize?client_id=65685&redirect_uri=https://potrblog.home.blog/&response_type=code&blog=https://potrblog.home.blog/

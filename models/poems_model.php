@@ -24,7 +24,7 @@ class Poems_Model extends Model
         $data = [
             ':id' => $var,
         ];
-        $sth=$this->db->prepare("SELECT p.titlu,a.nume FROM poezie_romana p JOIN autor a on p.id_autor=a.id 
+        $sth=$this->db->prepare("SELECT p.id_autor, p.titlu,a.nume FROM poezie_romana p JOIN autor a on p.id_autor=a.id 
                                 WHERE p.id_autor=:id");
         $sth->execute($data);
         $result=$sth->fetchAll(PDO::FETCH_ASSOC);

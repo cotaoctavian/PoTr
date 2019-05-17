@@ -47,7 +47,6 @@ class Profile extends Controller{
     function description(){
         Session::init();
         $logged = Session::get('loggedIn');
-        echo $_POST['descriere'];
         if(isset($_POST['descriere'])){
             if($logged == true){
                 $this->model->upload_bio($_POST['descriere'], Session::get('id'));
