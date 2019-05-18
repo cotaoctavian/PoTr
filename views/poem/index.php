@@ -103,9 +103,9 @@
                         echo '
                             </div >';
                         if (Session::get('loggedIn') == true) {
-                            echo '<div class="verse-rate" >
+                                echo '<div class="verse-rate" >
                                     <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
-                                    <form >
+                                    <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
                                         <label > 5 </label >
                                         <input type = "radio" name = "rating" value = "5" > <br >
                                         <label > 4 </label >
@@ -116,6 +116,7 @@
                                         <input type = "radio" name = "rating" value = "2" > <br >
                                         <label > 1 </label >
                                         <input type = "radio" name = "rating" value = "1" > <br >
+                                        <input type="submit" value="Rate it!" class = "comm-button">
                                     </form >
                                 </div >';
                         }
@@ -192,21 +193,20 @@
                                 if ($val->id_strofa_tradusa == $last_id && $last_adn_id != $val->id) {
                                     $last_adn_id = $val->id;
                                     echo "<div >
-                                                             <span > <strong > $val->username  </strong > </span >
-                                                            <br >
-                                                            <span > $val->adnotare </span >
-                                                        </div >";
+                                             <span > <strong > $val->username  </strong > </span >
+                                             <br >
+                                             <span > $val->adnotare </span >
+                                          </div >";
                                 }
                             }
                         }
 
-                        echo '
-                                      </div >';
+                        echo '</div >';
 
                         if (Session::get('loggedIn') == true) {
                             echo '<div class="verse-rate" >
                                             <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
-                                            <form >
+                                            <form action = "../../../verseRating/'.$this->poemData->autor_id.'/'.strtolower($this->poemData->titlu_ro).'/'.$this->language.'/'.$row->id_strofa.'" method = "POST">
                                                 <label > 5 </label >
                                                 <input type = "radio" name = "rating" value = "5" > <br >
                                                 <label > 4 </label >
@@ -217,6 +217,7 @@
                                                 <input type = "radio" name = "rating" value = "2" > <br >
                                                 <label > 1 </label >
                                                 <input type = "radio" name = "rating" value = "1" > <br >
+                                                <input type="submit" value="Rate it!" class = "comm-button">
                                             </form >
                                           </div >';
                         }
@@ -247,9 +248,7 @@
                                 }
                             }
                         }
-                        echo '
-                                    </div >
-                                    <br >';
+                        echo '</div > <br >';
                         if (Session::get('loggedIn')) {
                             echo '<div class="comment-form" >
                                         <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
@@ -311,18 +310,19 @@
                         if (Session::get('loggedIn') == true) {
                             echo '<div class="verse-rate" >
                                 <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
-                                <form >
-                                    <label > 5 </label >
-                                    <input type = "radio" name = "rating" value = "5" > <br >
-                                    <label > 4 </label >
-                                    <input type = "radio" name = "rating" value = "4" > <br >
-                                    <label > 3 </label >
-                                    <input type = "radio" name = "rating" value = "3" > <br >
-                                    <label > 2 </label >
-                                    <input type = "radio" name = "rating" value = "2" > <br >
-                                    <label > 1 </label >
-                                    <input type = "radio" name = "rating" value = "1" > <br >
-                                </form >
+                                <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
+                                        <label > 5 </label >
+                                        <input type = "radio" name = "rating" value = "5" > <br >
+                                        <label > 4 </label >
+                                        <input type = "radio" name = "rating" value = "4" > <br >
+                                        <label > 3 </label >
+                                        <input type = "radio" name = "rating" value = "3" > <br >
+                                        <label > 2 </label >
+                                        <input type = "radio" name = "rating" value = "2" > <br >
+                                        <label > 1 </label >
+                                        <input type = "radio" name = "rating" value = "1" > <br >
+                                        <input type="submit" value="Rate it!" class = "comm-button">
+                                 </form >
                             </div >';
                         }
 
@@ -447,9 +447,7 @@
                 <div>
                     <input type="checkbox" id="check-500"/>
                     <label for="check-500" class="verse">
-                                <span>
-                            <?php echo '<span> <a href = "" id = "no-link"> Load more.. </a> </span>'; ?>
-                                </span>
+                                <span> Load more.. </span>
                     </label>
 
                     <div class="verse-details">

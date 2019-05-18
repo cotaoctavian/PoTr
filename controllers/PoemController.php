@@ -66,6 +66,19 @@ class Poem extends Controller
         }
     }
 
+    function verseRating($author_id, $title, $language, $verse_id){
+        Session::init();
+        $logged = Session::get('loggedIn');
+        if(isset($_POST['rating'])){
+            if($logged){
+                $this->model->addRating($_POST['rating'], $author_id, $title, $language, $verse_id);
+            }
+            else{
+                return 0;
+            }
+        }
+    }
+
 
     function share($var, $var1, $var2)
     {

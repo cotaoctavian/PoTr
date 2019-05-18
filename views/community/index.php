@@ -34,7 +34,7 @@
 <div class="table-active-users">
     <span></span>
     <span><strong>Username</strong></span>
-    <span><strong>Rating</strong></span>
+    <span><strong>Translates</strong></span>
     <span>1</span>
     <span>Cota Stefan-Octavian</span>
     <span>100</span>

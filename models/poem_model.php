@@ -21,6 +21,13 @@ class Poem_Model extends Model {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
 
+        $array = [
+            ':lang' => $var2
+        ];
+
+        $st=$this->db->prepare("UPDATE strofa_tradusa SET vizualizari = vizualizari + 1 WHERE limba = :lang");
+        $st->execute($array);
+
         $result = $stmt->fetch(PDO::FETCH_OBJ);
 
         $count = $stmt->rowCount();
@@ -44,7 +51,7 @@ class Poem_Model extends Model {
                 JOIN poezie_tradusa d ON d.id_poezie_romana = p.id
                 JOIN strofa_tradusa b ON b.id_poezie_tradusa = d.id 
                 WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang AND b.limba = :langs
-                ORDER BY b.nr_strofa
+                ORDER BY b.nr_strofa, b.rating DESC
                 ";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
@@ -67,13 +74,13 @@ class Poem_Model extends Model {
             ':lang' => $var2,
             ':langs' => $var2,
         ];
-        $sql = "SELECT p.poezie, p.titlu AS titlu_ro , c.nume AS nume_autor , c.id AS autor_id , b.strofa, b.nr_strofa, u.nume AS username , u.id AS user_id, d.titlu AS titlu_trad, d.limba, b.id AS id_strofa FROM POEZIE_ROMANA p 
+        $sql = "SELECT p.poezie, p.titlu AS titlu_ro , c.nume AS nume_autor , c.id AS autor_id , b.strofa, b.nr_strofa, b.rating, u.nume AS username , u.id AS user_id, d.titlu AS titlu_trad, d.limba, b.id AS id_strofa FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
                 JOIN poezie_tradusa d ON d.id_poezie_romana = p.id
                 JOIN strofa_tradusa b ON b.id_poezie_tradusa = d.id 
                 JOIN USER u ON u.id = b.id_user 
                 WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang AND b.limba = :langs
-                ORDER BY b.nr_strofa, b.rating
+                ORDER BY b.nr_strofa, b.rating DESC
                 ";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
@@ -102,8 +109,7 @@ class Poem_Model extends Model {
                 JOIN strofa_tradusa b ON b.id_poezie_tradusa = d.id 
                 JOIN USER u ON u.id = b.id_user 
                 JOIN adnotari adn ON adn.id_strofa_tradusa = b.id 
-                WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang AND b.limba = :langs
-                ";
+                WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang AND b.limba = :langs ";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
 
@@ -131,8 +137,7 @@ class Poem_Model extends Model {
                 JOIN strofa_tradusa b ON b.id_poezie_tradusa = d.id 
                 JOIN USER u ON u.id = b.id_user 
                 JOIN comentarii_strofa comm ON comm.id_strofa_tradusa = b.id 
-                WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang AND b.limba = :langs
-                ";
+                WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang AND b.limba = :langs";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
 
@@ -231,6 +236,7 @@ class Poem_Model extends Model {
         $count = $stmt->rowCount();
         if($count > 0){
             header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
         }
         else {
             return 0;
@@ -251,10 +257,29 @@ class Poem_Model extends Model {
         $count = $stmt->rowCount();
         if($count > 0){
             header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
         }
         else {
             return 0;
         }
     }
 
+    public function addRating($rating, $author_id, $title, $language, $verse_id){
+        $array = [
+            ':rating' => $rating,
+            ':verse_id' => $verse_id,
+        ];
+        $sql = "UPDATE strofa_tradusa SET rating = :rating+rating WHERE id = :verse_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
 }
