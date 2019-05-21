@@ -30,6 +30,7 @@ class Poem extends Controller
         $this->view->language = $var2;
         Session::init();
         $logged = Session::get('loggedIn');
+        if($logged)  $this->view->userInfo = $this->model->userInfo(Session::get('id'));
         if (isset($_POST['comment']) && !empty($_POST['comment']) && !ctype_space($_POST['comment'])) {
             if ($logged) {
                 $this->model->addComm($_POST['comment'], Session::get('id'), $var, $var1, $var2);
@@ -50,7 +51,7 @@ class Poem extends Controller
             else {
                 return 0;
             }
-        }
+        }else return 0;
     }
 
     function verseComments($author_id, $title, $language, $verse_id){
@@ -63,7 +64,7 @@ class Poem extends Controller
             else {
                 return 0;
             }
-        }
+        }else return 0;
     }
 
     function verseRating($author_id, $title, $language, $verse_id){
@@ -76,40 +77,35 @@ class Poem extends Controller
             else{
                 return 0;
             }
+        } else return 0;
+    }
+
+    function addTranslation($author_id, $title, $language, $poem_id, $no_verse){
+        Session::init();
+        if(isset($_POST['translate'])  && !empty($_POST['translate']) && !ctype_space($_POST['translate']) ){
+            $this->model->addTranslation($author_id, $title, $language, $poem_id, $no_verse, Session::get('id'), $_POST['translate']);
         }
     }
 
+    function deleteTranslation($author_id, $title, $language, $poem_id){
+        $this->model->deleteTranslation($author_id, $title, $language, $poem_id);
+    }
 
-    function share($var, $var1, $var2)
+    function deleteVerseComment($author_id, $title, $language, $comm_id){
+        $this->model->deleteVerseComment($author_id, $title, $language, $comm_id);
+    }
+
+    function deleteVerseAnnotation($author_id, $title, $language, $adn_id){
+        $this->model->deleteVerseAnnotation($author_id, $title, $language, $adn_id);
+    }
+
+    function deleteComm($author_id, $title, $language, $comm_id){
+        $this->model->deleteComment($author_id, $title, $language, $comm_id);
+    }
+
+    function share($author_id, $title, $language)
     {
-        $options = array(
-            'http' =>
-                array(
-                    'ignore_errors' => true,
-                    'method' => 'POST',
-                    'header' =>
-                        array(
-                            0 => 'Authorization: Bearer xCLVc^1dgI**nRrHwsq2w6tlVPYgFH^Q^kJY9rm4b^x!n$vkK)A*zwL@nC1o#K8i',
-                            1 => 'Content-Type: application/x-www-form-urlencoded',
-                        ),
-                    'content' =>
-                        http_build_query(array(
-                            'title' => 'My first post!',
-                            'content' => 'Hello, Im Octavian!',
-                            'tags' => 'potr',
-                            'categories' => 'poems',
-                        )),
-                ),
-        );
-
-        $context = stream_context_create($options);
-        $response = file_get_contents(
-            'https://public-api.wordpress.com/rest/v1.2/sites/162185500/posts/new/',
-            false,
-            $context
-        );
-        $response = json_decode($response);
-        header('location:../../../../poem/poezie/'.$var.'/'.$var1.'/'.$var2);
+       $this->model->share($author_id, $title, $language);
     }
 }
 

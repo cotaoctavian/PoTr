@@ -65,12 +65,19 @@
                         echo '
             <div class="accordion">
                 <div>
-                    <input type="checkbox" id="check-' . $cnt . '" />
-                    <label for="check-' . $cnt . '" class="verse">
+                    <input type="checkbox" id="check-' . $cnt . '" />  
+                    <label for="check-' . $cnt . '" class="verse"> 
                         <span>';
+                        if (Session::get('loggedIn') == true) {
+                            if ($this->userInfo->admin) {
+                                echo ' <form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class = "go-right">
+                                             <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-x" />
+                                        </form>';
+                            }
+                        }
                         $cnt++;
                         echo $row->strofa;
-                        echo '</span >
+                        echo '</span > 
                         </label >
 
                         <div class="verse-details" >';
@@ -91,11 +98,18 @@
                             foreach ($this->annotations as $val) {
                                 if ($val->id_strofa_tradusa == $last_id && $last_adn_id != $val->id) {
                                     $last_adn_id = $val->id;
-                                    echo "<div >
-                                             <span > <strong > $val->username  </strong > </span >
-                                            <br >
-                                            <span > $val->adnotare </span >
+                                    echo "<div >";
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo ' <form action = "../../../deleteVerseAnnotation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $val->id . '" method = "POST">';
+                                            echo "<strong > $val->username  </strong >";
+                                            echo '<input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-x" />
+                                            </form>';
+                                        } else echo "<strong > $val->username  </strong >";
+                                    }  else echo "<strong > $val->username  </strong >";
+                                        echo "<span > $val->adnotare </span>
                                         </div >";
+
                                 }
                             }
                         }
@@ -140,10 +154,18 @@
                             foreach ($this->commentaries as $val) {
                                 if ($val->id_strofa_tradusa == $last_id && $last_comm_id != $val->id) {
                                     $last_comm_id = $val->id;
-                                    echo "<div >
-                                            <span > <strong > $val->username  </strong > </span > <br >
-                                            <span > $val->comentariu </span >
-                                             </div >";
+                                    echo "<div >";
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo ' <form action = "../../../deleteVerseComment/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $val->id . '" method = "POST">';
+                                            echo "<strong > $val->username  </strong >";
+                                            echo '<input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-x" />
+                                            </form>';
+                                        } else echo "<strong > $val->username  </strong >";
+                                    }
+                                    else echo "<strong > $val->username  </strong >";
+                                    echo "<span > $val->comentariu </span>
+                                        </div >";
                                 }
                             }
                         }
@@ -152,10 +174,13 @@
                         if (Session::get('loggedIn') == true) {
                             echo '<br />
                                     <div class="comment-form" >
+                                    <form action="../../../addTranslation/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_poezie_tradusa.'/'. $row->nr_strofa.'"
+                                      method="POST">
                                         <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
-                                        <textarea rows = "4" cols = "50" name = "comment" class="comm-box-accordion" > </textarea >
+                                        <textarea rows = "4" cols = "50" name = "translate" class="comm-box-accordion" > </textarea >
                                         <button type = "submit" class="comm-button" > Post! </button >
                                     </div >
+                                    </form>
                                     <br >';
                         }
                         echo '</div >';
@@ -170,9 +195,16 @@
                                         <input type = "checkbox" id = "check-' . $cnt . '" />
                                         <label for="check-' . $cnt . '" class="verse" >
                                                  <span >';
-                        $cnt++;
-                        echo $row->strofa;
-                        echo '</span >
+                                                    if (Session::get('loggedIn') == true) {
+                                                        if ($this->userInfo->admin) {
+                                                            echo '<form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class ="go-x">
+                                                                                            <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x" />
+                                                                                        </form>';
+                                                        }
+                                                    }
+                                                    $cnt++;
+                                                    echo $row->strofa;
+                                                 echo '</span >
                                         </label >
 
                                     <div class="verse-details" >';
@@ -192,11 +224,18 @@
                             foreach ($this->annotations as $val) {
                                 if ($val->id_strofa_tradusa == $last_id && $last_adn_id != $val->id) {
                                     $last_adn_id = $val->id;
-                                    echo "<div >
-                                             <span > <strong > $val->username  </strong > </span >
-                                             <br >
-                                             <span > $val->adnotare </span >
-                                          </div >";
+                                    echo "<div >";
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo ' <form action = "../../../deleteVerseAnnotation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $val->id . '" method = "POST">';
+                                            echo "<strong > $val->username  </strong >";
+                                            echo '<input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-x" />
+                                            </form>';
+                                        } else echo "<strong > $val->username  </strong >";
+                                    }  else echo "<strong > $val->username  </strong >";
+                                        echo "<span > $val->adnotare </span>
+                                        </div >";
+
                                 }
                             }
                         }
@@ -241,21 +280,22 @@
                             foreach ($this->commentaries as $val) {
                                 if ($val->id_strofa_tradusa == $last_id && $last_comm_id != $val->id) {
                                     $last_comm_id = $val->id;
-                                    echo "<div >
-                                            <span > <strong > $val->username  </strong > </span > <br >
-                                            <span > $val->comentariu </span >
-                                             </div >";
+                                    echo "<div >";
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo ' <form action = "../../../deleteVerseComment/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $val->id . '" method = "POST">';
+                                            echo "<strong > $val->username  </strong >";
+                                            echo '<input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-x" />
+                                            </form>';
+                                        } else echo "<strong > $val->username  </strong >";
+                                    }  else echo "<strong > $val->username  </strong >";
+                                        echo "<span > $val->comentariu </span>
+                                        </div >";
                                 }
                             }
                         }
                         echo '</div > <br >';
-                        if (Session::get('loggedIn')) {
-                            echo '<div class="comment-form" >
-                                        <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
-                                        <textarea rows = "4" cols = "50" name = "comment" class="comm-box-accordion" > </textarea >
-                                        <button type = "submit" class="comm-button" > Post!</button >
-                                    </div >';
-                        }
+
                         echo '<br >
                                 </div >
                             </div >
@@ -273,9 +313,16 @@
                             <input type = "checkbox" id = "check-' . $cnt . '" />
                             <label for="check-' . $cnt . '" class="verse" >
                                      <span >';
-                        $cnt++;
-                        echo $row->strofa;
-                        echo '</span >
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo '<form action = action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class = "go-right">
+                                                                <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-x" />
+                                                  </form>';
+                                        }
+                                    }
+                                    $cnt++;
+                                    echo $row->strofa;
+                                    echo '</span >
                             </label >
 
                         <div class="verse-details" >';
@@ -295,10 +342,16 @@
                             foreach ($this->annotations as $val) {
                                 if ($val->id_strofa_tradusa == $last_id && $last_adn_id != $val->id) {
                                     $last_adn_id = $val->id;
-                                    echo "<div >
-                                             <span > <strong > $val->username  </strong > </span >
-                                            <br >
-                                            <span > $val->adnotare </span >
+                                    echo "<div >";
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo '<form action = "../../../deleteVerseAnnotation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $val->id . '" method = "POST">';
+                                            echo "<strong > $val->username  </strong >";
+                                            echo '<input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-x" />
+                                            </form>';
+                                        } else echo "<strong > $val->username  </strong >";
+                                    }  else echo "<strong > $val->username  </strong >";
+                                    echo "<span > $val->adnotare </span>
                                         </div >";
                                 }
                             }
@@ -346,10 +399,17 @@
                             foreach ($this->commentaries as $val) {
                                 if ($val->id_strofa_tradusa == $last_id && $last_comm_id != $val->id) {
                                     $last_comm_id = $val->id;
-                                    echo "<div >
-                                            <span > <strong > $val->username  </strong > </span > <br >
-                                            <span > $val->comentariu </span >
-                                             </div >";
+                                    echo "<div >";
+                                    if (Session::get('loggedIn') == true) {
+                                        if ($this->userInfo->admin) {
+                                            echo '<form action = "../../../deleteVerseComment/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $val->id . '" method = "POST">';
+                                            echo "<strong > $val->username  </strong >";
+                                            echo '<input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-x" />
+                                            </form>';
+                                        } else echo "<strong > $val->username  </strong >";
+                                    }  else echo "<strong > $val->username  </strong >";
+                                    echo "<span > $val->comentariu </span>
+                                        </div >";
                                 }
                             }
                         }
@@ -358,9 +418,12 @@
                                     <br >';
                         if (Session::get('loggedIn') == true) {
                             echo '<div class="comment-form" >
-                                            <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
-                                            <textarea rows = "4" cols = "50" name = "comment" class="comm-box-accordion" > </textarea >
-                                            <button type = "submit" class="comm-button" > Post!</button >
+                                           <form action="../../../addTranslation/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_poezie_tradusa.'/'. $row->nr_strofa.'"
+                                                 method="POST">
+                                                <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
+                                                <textarea rows = "4" cols = "50" name = "translate" class="comm-box-accordion textarea" > </textarea >
+                                                <button type = "submit" class="comm-button" > Post! </button >
+                                            </form>
                                         </div >';
                         }
                         echo '<br >
@@ -395,7 +458,13 @@
             if ($this->commData) {
                 $i = 1;
                 foreach ($this->commData as $row) {
-                    print_r('<span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>');
+                    if($this->userInfo->admin) {
+                        echo '<form action = "../../../deleteComm/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id . '">
+                                                        <span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>
+                                                        <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-comms" />
+                                                  </form>';
+                    }
+                    else print_r('<span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>');
                     if ($i == 5) break;
                     $i++;
                 }
@@ -416,7 +485,15 @@
                                 <?php if ($this->commData) {
                                     $i = 1;
                                     foreach ($this->commData as $row) {
-                                        if ($i > 5) print_r(' <span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span> ');
+                                        if ($i > 5) {
+                                            if($this->userInfo->admin) {
+                                                echo '<form action = "../../../deleteComm/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id . '">
+                                                        <span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>
+                                                        <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x go-comms" />
+                                                  </form>';
+                                            }
+                                            else print_r('<span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>');
+                                        }
                                         $i++;
                                     }
                                 } ?>
@@ -436,8 +513,7 @@
             <?php if ($this->commData) {
                 $i = 1;
                 foreach ($this->commData as $row) {
-                    print_r('
-                    <span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>');
+                    print_r('<span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>');
                     if ($i == 5) break;
                     $i++;
                 }
@@ -456,7 +532,7 @@
                                 <?php if ($this->commData) {
                                     $i = 1;
                                     foreach ($this->commData as $row) {
-                                        if ($i > 5) print_r(' <span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span>');
+                                        if ($i > 5) echo' <span> <img src = "/assets/images/person.png" class = "person-icon" alt =""> ' . $row->nume . '  <span class = "comment-text-box"> ' . $row->text . '  </span> </span> ';
                                         $i++;
                                     }
                                 } ?>
@@ -473,7 +549,7 @@
 
 <div id = "table-share">
     <h1> Share it! </h1>
-    <form action = "/../../poem/share/<?php echo $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language ?>" method = "POST">
+    <form action = "/../../poem/share/<?php echo $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language?>" method = "POST">
         <input type="image" src="/assets/images/wordpress.png" alt="Submit Form" class = "img-share" />
     </form>
 

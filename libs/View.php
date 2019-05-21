@@ -2,6 +2,7 @@
 
 class View {
 
+    public $userInfo;
     public $poemData;
     public $authorData;
     public $commData;

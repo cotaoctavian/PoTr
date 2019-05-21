@@ -74,7 +74,7 @@ class Poem_Model extends Model {
             ':lang' => $var2,
             ':langs' => $var2,
         ];
-        $sql = "SELECT p.poezie, p.titlu AS titlu_ro , c.nume AS nume_autor , c.id AS autor_id , b.strofa, b.nr_strofa, b.rating, u.nume AS username , u.id AS user_id, d.titlu AS titlu_trad, d.limba, b.id AS id_strofa FROM POEZIE_ROMANA p 
+        $sql = "SELECT p.poezie, p.titlu AS titlu_ro , c.nume AS nume_autor , c.id AS autor_id , b.strofa, b.nr_strofa, b.rating, u.nume AS username , u.id AS user_id, d.id AS id_poezie_tradusa, d.titlu AS titlu_trad, d.limba, b.id AS id_strofa FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
                 JOIN poezie_tradusa d ON d.id_poezie_romana = p.id
                 JOIN strofa_tradusa b ON b.id_poezie_tradusa = d.id 
@@ -160,7 +160,7 @@ class Poem_Model extends Model {
             ':title' => $var1
         ];
 
-        $sql = "SELECT c.nume, p.text FROM POEZIE_ROMANA b
+        $sql = "SELECT c.nume, p.text, p.id FROM POEZIE_ROMANA b
                 JOIN autor a ON b.id_autor = a.id
                 JOIN COMENTARII_POEZIE p ON p.id_poezie_romana = b.id
                 JOIN user c ON c.id = p.id_user
@@ -282,4 +282,171 @@ class Poem_Model extends Model {
             return 0;
         }
     }
+
+    public function addTranslation($author_id, $title, $language, $poem_id, $no_verse, $user_id, $strofa){
+        $array = [
+            ':id' => $user_id,
+            ':id_poezie' => $poem_id,
+            ':strofa' => '<pre class = "textarea">' . $strofa . '</pre>',
+            ':nr_strofa'=> $no_verse,
+            ':vizualizari' => 0,
+            ':rating' => 0,
+            ':lang' => $language,
+        ];
+        $sql = "INSERT INTO strofa_tradusa (id_user, id_poezie_tradusa, strofa, nr_strofa, vizualizari, rating, limba, data_adaugarii) VALUES (:id, :id_poezie, :strofa, :nr_strofa, :vizualizari, :rating, :lang, NOW())";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            header('location:../../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public function deleteTranslation($author_id, $title, $language, $poem_id)
+    {
+        $array = [
+            ':poem_id' => $poem_id,
+        ];
+
+        $sql = "DELETE FROM strofa_tradusa WHERE id = :poem_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+    public function deleteVerseComment($author_id, $title, $language, $comm_id)
+    {
+        $array = [
+            ':comm_id' => $comm_id,
+        ];
+
+        $sql = "DELETE FROM comentarii_strofa WHERE id = :comm_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+    public function deleteVerseAnnotation($author_id, $title, $language, $adn_id)
+    {
+        $array = [
+            ':adn_id' => $adn_id,
+        ];
+
+        $sql = "DELETE FROM adnotari WHERE id = :adn_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+
+    public function share($author_id, $title, $language)
+    {
+        $data = [
+            ':title' => $title,
+            ':id' => $author_id,
+            ':lang' => $language,
+        ];
+        $sql = "SELECT p.poezie, p.titlu AS titlu_ro, c.nume AS nume_autor , c.id AS autor_id, d.titlu AS titlu_trad FROM POEZIE_ROMANA p 
+                JOIN autor c ON p.id_autor = c.id 
+                JOIN poezie_tradusa d ON d.id_poezie_romana = p.id
+                WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($data);
+
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        $options = array(
+            'http' =>
+                array(
+                    'ignore_errors' => true,
+                    'method' => 'POST',
+                    'header' =>
+                        array(
+                            0 => 'Authorization: Bearer xCLVc^1dgI**nRrHwsq2w6tlVPYgFH^Q^kJY9rm4b^x!n$vkK)A*zwL@nC1o#K8i',
+                            1 => 'Content-Type: application/x-www-form-urlencoded',
+                        ),
+                    'content' =>
+                        http_build_query(array(
+                            'title' => $result->titlu_ro,
+                            'content' => $result->poezie,
+                            'tags' => 'PoTr',
+                            'categories' => 'Poems',
+                        )),
+                ),
+        );
+
+        $context = stream_context_create($options);
+        $response = file_get_contents(
+            'https://public-api.wordpress.com/rest/v1.2/sites/162185500/posts/new/',
+            false,
+            $context
+        );
+        $response = json_decode($response);
+        header('location:../../../../poem/poezie/'.$author_id.'/'.$title.'/'.$language);
+    }
+
+    public function userInfo($id)
+    {
+        $array = [
+            ':id' => $id
+        ];
+
+        $sql = "SELECT admin FROM user WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        }
+        else return 0;
+    }
+
+    public function deleteComment($author_id, $title, $language, $comm_id)
+    {
+        $array = [
+            ':comm_id' => $comm_id,
+        ];
+
+        $sql = "DELETE FROM comentarii_poezie WHERE id = :comm_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+
 }
