@@ -30,7 +30,10 @@ class Poem extends Controller
         $this->view->language = $var2;
         Session::init();
         $logged = Session::get('loggedIn');
-        if($logged)  $this->view->userInfo = $this->model->userInfo(Session::get('id'));
+        if($logged)  {
+            $this->view->userInfo = $this->model->userInfo(Session::get('id'));
+            $this->view->rateData = $this->model->rateInfo(Session::get('id'));
+        }
         if (isset($_POST['comment']) && !empty($_POST['comment']) && !ctype_space($_POST['comment'])) {
             if ($logged) {
                 $this->model->addComm($_POST['comment'], Session::get('id'), $var, $var1, $var2);
@@ -72,7 +75,7 @@ class Poem extends Controller
         $logged = Session::get('loggedIn');
         if(isset($_POST['rating'])){
             if($logged){
-                $this->model->addRating($_POST['rating'], $author_id, $title, $language, $verse_id);
+                $this->model->addRating($_POST['rating'], $author_id, $title, $language, $verse_id, Session::get('id'));
             }
             else{
                 return 0;
@@ -103,9 +106,9 @@ class Poem extends Controller
         $this->model->deleteComment($author_id, $title, $language, $comm_id);
     }
 
-    function share($author_id, $title, $language)
+    function share($author_id, $title, $language, $verse_id)
     {
-       $this->model->share($author_id, $title, $language);
+       $this->model->share($author_id, $title, $language, $verse_id);
     }
 }
 

@@ -11,6 +11,7 @@ class View {
     public $annotations;
     public $commentaries;
     public $poemInfo;
+    public $rateData;
 
     public function render($name){
         require 'views/' . $name . '.php';

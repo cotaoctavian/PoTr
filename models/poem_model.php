@@ -263,8 +263,8 @@ class Poem_Model extends Model {
             return 0;
         }
     }
-
-    public function addRating($rating, $author_id, $title, $language, $verse_id){
+    
+    public function addRating($rating, $author_id, $title, $language, $verse_id, $user_id){
         $array = [
             ':rating' => $rating,
             ':verse_id' => $verse_id,
@@ -273,8 +273,18 @@ class Poem_Model extends Model {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($array);
 
+        $data = [
+          ':id_user' => $user_id,
+          ':id_vers' => $verse_id,
+        ];
+
+        $query = "INSERT INTO rating (id_user, id_strofa_tradusa) VALUES (:id_user, :id_vers)";
+        $state = $this->db->prepare($query);
+        $state->execute($data);
+
         $count = $stmt->rowCount();
-        if($count){
+        $count1 = $state->rowCount();
+        if($count && $count1){
             header('location:../../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
             return 1;
         }
@@ -312,6 +322,10 @@ class Poem_Model extends Model {
         $array = [
             ':poem_id' => $poem_id,
         ];
+
+        $query = "DELETE FROM rating WHERE id_strofa_tradusa = :poem_id";
+        $query = $this->db->prepare($query);
+        $query->execute($array);
 
         $sql = "DELETE FROM strofa_tradusa WHERE id = :poem_id";
         $stmt = $this->db->prepare($sql);
@@ -365,18 +379,12 @@ class Poem_Model extends Model {
     }
 
 
-    public function share($author_id, $title, $language)
+    public function share($author_id, $title, $language, $verse_id)
     {
         $data = [
-            ':title' => $title,
-            ':id' => $author_id,
-            ':lang' => $language,
+            ':verse_id' => $verse_id
         ];
-        $sql = "SELECT p.poezie, p.titlu AS titlu_ro, c.nume AS nume_autor , c.id AS autor_id, d.titlu AS titlu_trad FROM POEZIE_ROMANA p 
-                JOIN autor c ON p.id_autor = c.id 
-                JOIN poezie_tradusa d ON d.id_poezie_romana = p.id
-                WHERE p.titlu = :title AND c.id = :id AND d.limba = :lang
-                ";
+        $sql = "SELECT strofa FROM strofa_tradusa WHERE id = :verse_id";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
 
@@ -394,8 +402,8 @@ class Poem_Model extends Model {
                         ),
                     'content' =>
                         http_build_query(array(
-                            'title' => $result->titlu_ro,
-                            'content' => $result->poezie,
+                            'title' => ucfirst($title),
+                            'content' => $result->strofa,
                             'tags' => 'PoTr',
                             'categories' => 'Poems',
                         )),
@@ -409,7 +417,7 @@ class Poem_Model extends Model {
             $context
         );
         $response = json_decode($response);
-        header('location:../../../../poem/poezie/'.$author_id.'/'.$title.'/'.$language);
+        header('location:../../../../../poem/poezie/'.$author_id.'/'.$title.'/'.$language);
     }
 
     public function userInfo($id)
@@ -448,5 +456,19 @@ class Poem_Model extends Model {
         }
     }
 
+    public function rateInfo($user_id)
+    {
+        $array = [':user_id' => $user_id];
+
+        $sql = "SELECT * FROM RATING WHERE id_user = :user_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($array);
+
+        $count = $stmt->rowCount();
+        if($count){
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        else return 0;
+    }
 
 }

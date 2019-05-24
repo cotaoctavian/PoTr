@@ -117,22 +117,31 @@
                         echo '
                             </div >';
                         if (Session::get('loggedIn') == true) {
+                            if($this->rateData) {
+                                $flag = false;
+                                foreach ($this->rateData as $elem) {
+                                    if ($elem->id_strofa_tradusa == $row->id_strofa) $flag = true;
+                                }
+                            } else $flag = false;
+
+                            if(!$flag) {
                                 echo '<div class="verse-rate" >
-                                    <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
-                                    <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
-                                        <label > 5 </label >
-                                        <input type = "radio" name = "rating" value = "5" > <br >
-                                        <label > 4 </label >
-                                        <input type = "radio" name = "rating" value = "4" > <br >
-                                        <label > 3 </label >
-                                        <input type = "radio" name = "rating" value = "3" > <br >
-                                        <label > 2 </label >
-                                        <input type = "radio" name = "rating" value = "2" > <br >
-                                        <label > 1 </label >
-                                        <input type = "radio" name = "rating" value = "1" > <br >
-                                        <input type="submit" value="Rate it!" class = "comm-button">
-                                    </form >
-                                </div >';
+                                        <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
+                                        <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
+                                            <label > 5 </label >
+                                            <input type = "radio" name = "rating" value = "5" > <br >
+                                            <label > 4 </label >
+                                            <input type = "radio" name = "rating" value = "4" > <br >
+                                            <label > 3 </label >
+                                            <input type = "radio" name = "rating" value = "3" > <br >
+                                            <label > 2 </label >
+                                            <input type = "radio" name = "rating" value = "2" > <br >
+                                            <label > 1 </label >
+                                            <input type = "radio" name = "rating" value = "1" > <br >
+                                            <input type="submit" value="Rate it!" class = "comm-button">
+                                        </form >
+                                    </div >';
+                            }
                         }
 
                         echo '<div > <br >';
@@ -172,8 +181,13 @@
                         echo ' 
                                     </div > ';
                         if (Session::get('loggedIn') == true) {
+                            echo '  <br />
+                                    <span> <strong> Share it! </strong> </span>
+                                    <form action="../../../share/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_strofa.'" method = "POST">
+                                        <input type="image" src="/assets/images/wordpress.png" alt="Submit Form" class = "img-share" />
+                                    </form>   ';
                             echo '<br />
-                                    <div class="comment-form" >
+                                    <div class="comment-form" >      
                                     <form action="../../../addTranslation/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_poezie_tradusa.'/'. $row->nr_strofa.'"
                                       method="POST">
                                         <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
@@ -243,22 +257,31 @@
                         echo '</div >';
 
                         if (Session::get('loggedIn') == true) {
-                            echo '<div class="verse-rate" >
-                                            <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
-                                            <form action = "../../../verseRating/'.$this->poemData->autor_id.'/'.strtolower($this->poemData->titlu_ro).'/'.$this->language.'/'.$row->id_strofa.'" method = "POST">
-                                                <label > 5 </label >
-                                                <input type = "radio" name = "rating" value = "5" > <br >
-                                                <label > 4 </label >
-                                                <input type = "radio" name = "rating" value = "4" > <br >
-                                                <label > 3 </label >
-                                                <input type = "radio" name = "rating" value = "3" > <br >
-                                                <label > 2 </label >
-                                                <input type = "radio" name = "rating" value = "2" > <br >
-                                                <label > 1 </label >
-                                                <input type = "radio" name = "rating" value = "1" > <br >
-                                                <input type="submit" value="Rate it!" class = "comm-button">
-                                            </form >
-                                          </div >';
+                            if($this->rateData) {
+                                $flg = false;
+                                foreach ($this->rateData as $elem) {
+                                    if ($elem->id_strofa_tradusa == $row->id_strofa) $flg = true;
+                                }
+                            } else $flg = false;
+
+                            if(!$flg) {
+                                echo '<div class="verse-rate" >
+                                        <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
+                                        <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
+                                            <label > 5 </label >
+                                            <input type = "radio" name = "rating" value = "5" > <br >
+                                            <label > 4 </label >
+                                            <input type = "radio" name = "rating" value = "4" > <br >
+                                            <label > 3 </label >
+                                            <input type = "radio" name = "rating" value = "3" > <br >
+                                            <label > 2 </label >
+                                            <input type = "radio" name = "rating" value = "2" > <br >
+                                            <label > 1 </label >
+                                            <input type = "radio" name = "rating" value = "1" > <br >
+                                            <input type="submit" value="Rate it!" class = "comm-button">
+                                        </form >
+                                    </div >';
+                            }
                         }
 
                         echo '<div > <br >';
@@ -296,7 +319,12 @@
                         }
                         echo '</div > <br >';
 
-                        echo '<br >
+                        echo ' <span> <strong> Share it! </strong> </span>
+                                    <form action="../../../share/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_strofa.'" method = "POST">
+                                        <input type="image" src="/assets/images/wordpress.png" alt="Submit Form" class = "img-share" />
+                                    </form> ';
+
+                        echo '
                                 </div >
                             </div >
                             </div >
@@ -361,22 +389,31 @@
                             </div >';
 
                         if (Session::get('loggedIn') == true) {
-                            echo '<div class="verse-rate" >
-                                <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
-                                <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
-                                        <label > 5 </label >
-                                        <input type = "radio" name = "rating" value = "5" > <br >
-                                        <label > 4 </label >
-                                        <input type = "radio" name = "rating" value = "4" > <br >
-                                        <label > 3 </label >
-                                        <input type = "radio" name = "rating" value = "3" > <br >
-                                        <label > 2 </label >
-                                        <input type = "radio" name = "rating" value = "2" > <br >
-                                        <label > 1 </label >
-                                        <input type = "radio" name = "rating" value = "1" > <br >
-                                        <input type="submit" value="Rate it!" class = "comm-button">
-                                 </form >
-                            </div >';
+                            if($this->rateData) {
+                                $fl = false;
+                                foreach ($this->rateData as $elem) {
+                                    if ($elem->id_strofa_tradusa == $row->id_strofa) $fl = true;
+                                }
+                            } else $fl = false;
+
+                            if(!$fl) {
+                                echo '<div class="verse-rate" >
+                                        <span > <br > <img src = "/assets/images/rating.png" class="adnotation-icon" alt = "" > <strong > Rating: </strong > </span >
+                                        <form action = "../../../verseRating/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST">
+                                            <label > 5 </label >
+                                            <input type = "radio" name = "rating" value = "5" > <br >
+                                            <label > 4 </label >
+                                            <input type = "radio" name = "rating" value = "4" > <br >
+                                            <label > 3 </label >
+                                            <input type = "radio" name = "rating" value = "3" > <br >
+                                            <label > 2 </label >
+                                            <input type = "radio" name = "rating" value = "2" > <br >
+                                            <label > 1 </label >
+                                            <input type = "radio" name = "rating" value = "1" > <br >
+                                            <input type="submit" value="Rate it!" class = "comm-button">
+                                        </form >
+                                    </div >';
+                            }
                         }
 
                         echo '<div >
@@ -415,8 +452,13 @@
                         }
                         echo '
                                     </div >
-                                    <br >';
+                                    <br />';
                         if (Session::get('loggedIn') == true) {
+                            echo ' 
+                                    <span> <strong> Share it! </strong> </span>
+                                    <form action="../../../share/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_strofa.'" method = "POST">
+                                        <input type="image" src="/assets/images/wordpress.png" alt="Submit Form" class = "img-share" />
+                                    </form> <br /> ';
                             echo '<div class="comment-form" >
                                            <form action="../../../addTranslation/'.$this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language.'/'.$row->id_poezie_tradusa.'/'. $row->nr_strofa.'"
                                                  method="POST">
