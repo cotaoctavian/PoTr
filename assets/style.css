@@ -563,11 +563,11 @@
     border: 1px solid gray;
     border-radius: 5px;
     font-family: 'Titillium Web', sans-serif;
-    height: 50%;
+    height: 70%;
     margin: auto;
     margin-bottom: 3%;
     margin-top: 3%;
-    width: 50%;
+    width: 70%;
 }
 
 #rss-table {
@@ -581,7 +581,7 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     display: grid;
-    grid-template-columns: 0.25fr 0.5fr 1.5fr;
+    grid-template-columns: 0.25fr 0.5fr  1.5fr;
     margin: 0;
     padding-left: 2%;
 }
@@ -599,7 +599,7 @@
 #line-table {
     align-items: center;
     display: grid;
-    grid-template-columns: 0.2fr 1.5fr 1fr 0.7fr;
+    grid-template-columns: 0.25fr 1fr 1fr 1fr 0.7fr;
     padding: 2%;
 }
 
