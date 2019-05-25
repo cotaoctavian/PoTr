@@ -157,6 +157,7 @@
 
 .poem {
     border: 1px solid black;
+    font-family: 'Titillium Web', sans-serif;
     display: grid;
     flex: 1;
     margin: 2%;
@@ -173,6 +174,7 @@
 
 .accordion>div>input {
     display: none;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .accordion>div>label {
@@ -353,6 +355,12 @@
     text-align: center;
     margin-left:15%;
     width: 65%;
+}
+
+.textarea
+{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px;
 }
 
 .button-sign-up {
@@ -791,6 +799,30 @@
     padding-top: 2%;
     text-align: center;
     width: 99%;
+}
+
+.img-x{
+    width:10%;
+    height:10%;
+}
+
+.go-right{
+    position: absolute;
+    left:75%;
+}
+
+.go-x{
+    position:relative;
+    left:40%;
+}
+
+.go-comms{
+    float:left;
+}
+
+.img-go-x{
+    width:3%;
+    height:3%;
 }
 
 body {
