@@ -17,14 +17,20 @@ class Dashboard extends Controller
         }
     }
     function index()
-    {
+    {     $this->view->rssData=$this->model->rssTable();
         $this->view->render('dashboard/index');
     }
+
+
 
     function logout(){
         Session::destroy();
         header('location:../signin');
         exit;
 
+    }
+
+    function rssTable(){
+        $this->model->rssTable();
     }
 }

@@ -20,7 +20,9 @@ class Index_Model extends Model {
         $root=$dom->createElement('rss');
         $root=$dom->appendChild($root);
         $cnt=0;
+
         foreach ($datas as $data) {
+
           if($cnt<5) {
                 $row = $dom->createElement('row');
                 $row = $root->appendChild($row);
@@ -30,12 +32,13 @@ class Index_Model extends Model {
               $element4 = $row->appendChild($element4);
                 $element2 = $dom->createElement('nume', $data['nume']);
                 $element2 = $row->appendChild($element2);
-                $data1=date("d-m-Y-h-m");
+              date_default_timezone_set( 'Europe/Bucharest' );
+                $data1=date("Y-m-d h:i:s");
                 $d1=date_create($data1);
                 $data2=$data['data_adaugarii'];
                 $d2=date_create($data2);
-                $interval=date_diff($d2,$d1);
-                $differenceFormat='%d Day %h Hours  %i Minute ';
+                $interval=date_diff($d1,$d2);
+                $differenceFormat='%d Days %h Hours  %i Minutes ';
                 $result= $interval->format($differenceFormat);
                 $element3 = $dom->createElement('data', $result);
                 $element3 = $row->appendChild($element3);
