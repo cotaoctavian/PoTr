@@ -187,7 +187,7 @@ class Poem_Model extends Model {
         ];
 
         $sql = "SELECT p.id FROM POEZIE_ROMANA p 
-                JOIN autor c ON c.id = p.id
+                JOIN autor c ON c.id = p.id_autor
                 WHERE c.id = :id_author AND p.titlu = :title";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);

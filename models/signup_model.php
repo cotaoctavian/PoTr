@@ -11,7 +11,8 @@ class SignUp_Model extends Model
     {
         $email = $_POST['email'];
         $subject = 'Bine ati venit!';
-        $message = 'Bine ati venit!\n PoTr Translater este un site pentru cei pasionati de poezie, aici puteti adauga traduceri unor poezii sau puteti citi poeziile favorite! Echipa PoTr Transleter va doreste o calatorie frumoasa in lumea poeziei.';
+        $message = 'Bine ati venit!
+        PoTr Translater este un site pentru cei pasionati de poezie, aici puteti adauga traduceri unor poezii sau puteti citi poeziile favorite! Echipa PoTr Transleter va doreste o calatorie frumoasa in lumea poeziei.';
         $headers = 'From: ' . $email . "\r\n" .
             'Reply-To: ' . $email . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
@@ -56,8 +57,9 @@ class SignUp_Model extends Model
                                     header('location:../signin');
                                 } else echo "Eroare la register";
                             } else echo "Eroare la register!";
-                        } else echo "Parolele nu se potrivesc!";
+                        }
                     }
+                    else echo "Parolele nu se potrivesc!";
                 } else echo "Eroare!";
             } else echo "Acest nume sau mail a fost folosit deja!";
         }
