@@ -22,25 +22,24 @@ class Index_Model extends Model {
         $cnt=0;
 
         foreach ($datas as $data) {
-
           if($cnt<5) {
                 $row = $dom->createElement('row');
                 $row = $root->appendChild($row);
                 $element = $dom->createElement('titlu', $data['titlu']);
                 $element = $row->appendChild($element);
-              $element4 = $dom->createElement('utilizator', $data['utiliz']);
-              $element4 = $row->appendChild($element4);
+                $element4 = $dom->createElement('utilizator', $data['utiliz']);
+                $element4 = $row->appendChild($element4);
                 $element2 = $dom->createElement('nume', $data['nume']);
                 $element2 = $row->appendChild($element2);
-              date_default_timezone_set( 'Europe/Bucharest' );
-                $data1=date("Y-m-d h:i:s");
-                $d1=date_create($data1);
-                $data2=$data['data_adaugarii'];
-                $d2=date_create($data2);
-                $interval=date_diff($d1,$d2);
-                $differenceFormat='%d Days %h Hours  %i Minutes ';
-                $result= $interval->format($differenceFormat);
-                $element3 = $dom->createElement('data', $result);
+                $timestamp = time();
+                $date_a = strtotime($data['data_adaugarii']);
+                $date_b = strtotime(date("F d, Y h:i:s A", $timestamp));
+                $result = $date_b - $date_a;
+                $days    = floor($result / 86400);
+                $hours   = floor(($result - ($days * 86400)) / 3600);
+                $minutes = floor(($result - ($days * 86400) - ($hours * 3600))/60);
+                $seconds = floor(($result - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
+                $element3 = $dom->createElement('data', $days . ' days ' . $hours . ' hours ' . $minutes . ' minutes ');
                 $element3 = $row->appendChild($element3);
                 $element1 = $dom->createElement('vizualizari', $data['vizualizari']);
                 $element1 = $row->appendChild($element1);
