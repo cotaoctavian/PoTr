@@ -68,7 +68,7 @@
                   echo ' </div>';
                   echo '<span>' . $utilizator->item($k)->nodeValue . '</span>';
                   echo '<span> <img src="/assets/images/time.png" class="main-img" alt="">' . $dat->item($k)->nodeValue . ' </span>';
-                  echo '<span><img src="/assets/images/seen.png" class="main-img" alt="">' . $seen->item($k)->nodeValue . ' </span>';
+                  echo '<span><img src="/assets/images/seen.png" class="main-img" alt=""><space />  <space /> '. $seen->item($k)->nodeValue . ' </span>';
                   $cnt++;
                   echo '</a>';
               }
