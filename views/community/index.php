@@ -28,6 +28,7 @@
     <a href = "poems/authorsPoem/1" > POEMS! </a>
     <a href = "index.php" > COMMUNITY </a>
     <a href = "aboutus"> ABOUT US! </a>
+    <a href = "scholarly"> SCHOLARLY </a>
 </nav>
 
 <h2 class = "h2">Active users</h2>

@@ -28,6 +28,7 @@
     <a href = "poems/authorsPoem/1" > POEMS! </a>
     <a href = "community" > COMMUNITY </a>
     <a href = "aboutus"> ABOUT US! </a>
+    <a href = "scholarly"> SCHOLARLY </a>
 </nav>
 
 <div id = "about-us-container">
