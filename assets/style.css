@@ -591,7 +591,7 @@
     display: grid;
     grid-template-columns: 0.25fr 0.5fr  1.5fr;
     margin: 0;
-    padding-left: 2%;
+    padding-left: 1%;
 }
 
 #rss-table a {
@@ -608,7 +608,7 @@
     align-items: center;
     display: grid;
     grid-template-columns: 0.25fr 1fr 1fr 1fr 0.7fr;
-    padding: 2%;
+    padding: 1%;
 }
 
 #line-table:hover {

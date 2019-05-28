@@ -589,13 +589,6 @@
 </div>
 
 
-<div id = "table-share">
-    <h1> Share it! </h1>
-    <form action = "/../../poem/share/<?php echo $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language?>" method = "POST">
-        <input type="image" src="/assets/images/wordpress.png" alt="Submit Form" class = "img-share" />
-    </form>
-
-<div>
 </body>
 
 </html>
