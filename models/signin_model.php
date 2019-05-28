@@ -19,7 +19,7 @@ class SignIn_Model extends Model
         if ($err == 1) {
             echo "Toate campurile sunt obligatorii!";
         } else {
-            $sth = $this->db->prepare("SELECT ID, photo, bio FROM user WHERE nume=:nume AND parola=:parola");
+            $sth = $this->db->prepare("SELECT ID, photo, email, bio FROM user WHERE nume=:nume AND parola=:parola");
             $sth->execute(array(
                 ':nume' => $_POST['username'],
                 ':parola' => $_POST['password']
@@ -37,6 +37,7 @@ class SignIn_Model extends Model
                 Session::set('id', $result->ID);
                 Session::set('photo', 'assets/uploads/' . $result->photo);
                 Session::set('bio', $result->bio);
+                Session::set('email',$result->email);
                 header('location:../dashboard');
             } else {
                 header('location:../signin');

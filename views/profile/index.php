@@ -42,8 +42,6 @@
     <h3> Resetare parolă: </h3>
     <div class="table-profile">
         <form action="profile/changePass" method="post">
-            <p>E-mail:</p>
-            <input type="text" name="email" placeholder="Enter E-mail" class = "fields">
             <p> Password: </p>
             <input type="password" name="parola" placeholder="Enter Password" class = "fields">
             <p> Repetă parola: </p>

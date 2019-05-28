@@ -36,10 +36,9 @@ class Reset_Model extends Model
                     ));
 
                     $count = $sth->rowCount();
-                    if ($count > 0) {
-
+                    if ($count > 0)
                         if (isset($email)) {
-                            if (mail($email, $subject, $message, $headers)) {
+                            if (mail($email, $subject, $message)) {
                                 header('location:../signin');
                             } else {
                                 echo "Eroare la resetare parola!";
@@ -50,5 +49,4 @@ class Reset_Model extends Model
 
             }
         }
-    }
 }

@@ -44,47 +44,35 @@
     <div id="antet-table">
         <p><strong> #</strong></p>
         <p><strong>Title</strong> </p>
-        <p>   </p>
+        <p><strong>Utilizator</strong> </p>
+        <p> </p>
     </div>
 
     <div id = "rss-table">
-        <a id="line-table">
-            <span><strong> 1.</strong> </span>
-            <div id="two-lines">
-                <span><strong>Floarea albastra</strong> </span>
-                <span> Mihai Eminescu</span>
-            </div>
-            <span> <img src="/assets/images/time.png" class="main-img"> 23 minutes ago </span>
-            <span><img src="/assets/images/seen.png" class="main-img"> 10k </span>
-        </a>
-        <a id="line-table">
-            <span><strong> 2.</strong> </span>
-            <div id=two-lines>
-                <span><strong> Plumb</strong></span>
-                <span>George Bacovia </span>
-            </div>
-            <span> <img src="/assets/images/time.png" class="main-img"> 2 hours ago </span>
-            <span><img src="/assets/images/seen.png" class="main-img"> 100k </span>
-        </a>
-        <a id="line-table">
-            <span> <strong>3.</strong></span>
-            <div id="two-lines">
-                <span><strong>Testament</strong></span>
-                <span>Tudor Arghezi</span>
-            </div>
-            <span> <img src="/assets/images/time.png" class="main-img"> 17 hours ago </span>
-            <span><img src="/assets/images/seen.png" class="main-img"> 490k </span>
-        </a>
-        <a id="line-table">
-            <span> <strong>4.</strong> </span>
-            <div id="two-lines">
-                <span><strong>Flori de mucigai</strong></span>
-                <span> Tudor Arghezi </span>
-            </div>
-            <span> <img src="/assets/images/time.png" class="main-img"> 2 days ago </span>
-            <span><img src="/assets/images/seen.png" class="main-img"> 789k </span>
-        </a>
-
+        <?php
+        $doc=new DomDocument;
+        $doc->load('rss.xml');
+        $title = $doc->getElementsByTagName('titlu');
+        $utilizator=$doc->getElementsByTagName('utilizator');
+        $auth = $doc->getElementsByTagName('nume');
+        $dat = $doc->getElementsByTagName('data');
+        $seen = $doc->getElementsByTagName('vizualizari');
+             $cnt=1;
+             $k=0;
+              for($k=0;$k<5;$k++) {
+                  echo ' <a id="line-table">';
+                  echo '<span><strong>' . $cnt . '</strong> </span>';
+                  echo '<div id="two-lines">';
+                  echo '<span><strong>' . $title->item($k)->nodeValue . '</strong> </span>';
+                  echo '<span>' . $auth->item($k)->nodeValue . '</span>';
+                  echo ' </div>';
+                  echo '<span>' . $utilizator->item($k)->nodeValue . '</span>';
+                  echo '<span> <img src="/assets/images/time.png" class="main-img" alt="">' . $dat->item($k)->nodeValue . ' </span>';
+                  echo '<span><img src="/assets/images/seen.png" class="main-img" alt="">' . $seen->item($k)->nodeValue . ' </span>';
+                  $cnt++;
+                  echo '</a>';
+              }
+        ?>
     </div>
 
 </div>

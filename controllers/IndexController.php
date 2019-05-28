@@ -10,6 +10,11 @@ class Index extends Controller{
     }
 
     function index(){
+        $this->view->rssData=$this->model->rssTable();
         $this->view->render('index/index');
+    }
+
+    function rssTable(){
+            $this->model->rssTable();
     }
 }
