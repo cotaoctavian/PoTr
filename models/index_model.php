@@ -35,7 +35,7 @@ class Index_Model extends Model {
                 $date_a = strtotime($data['data_adaugarii']);
                 $date_b = strtotime(date("F d Y h:i:s", $timestamp));
                 $result = $date_b - $date_a;
-                $days    = abs(floor($result / 86400));
+                $days    = abs(round($result / 86400));
                 $hours   = floor(($result - ($days * 86400)) / 3600);
                 $hrs= floor(abs($result / 3600));
                 $minutes = floor(($result - ($days * 86400) - ($hours * 3600))/60);
