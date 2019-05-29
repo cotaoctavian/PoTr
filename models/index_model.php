@@ -33,13 +33,14 @@ class Index_Model extends Model {
                 $element2 = $row->appendChild($element2);
                 $timestamp = time();
                 $date_a = strtotime($data['data_adaugarii']);
-                $date_b = strtotime(date("F d, Y h:i:s A", $timestamp));
+                $date_b = strtotime(date("F d Y h:i:s", $timestamp));
                 $result = $date_b - $date_a;
-                $days    = floor($result / 86400);
+                $days    = abs(floor($result / 86400));
                 $hours   = floor(($result - ($days * 86400)) / 3600);
+                $hrs= floor(abs($result / 3600));
                 $minutes = floor(($result - ($days * 86400) - ($hours * 3600))/60);
                 $seconds = floor(($result - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
-                $element3 = $dom->createElement('data', $days . ' days ' . $hours . ' hours ' . $minutes . ' minutes ');
+                $element3 = $dom->createElement('data', $days . ' days ' . $hrs . ' hours ' . $minutes . ' minutes ');
                 $element3 = $row->appendChild($element3);
                 $element1 = $dom->createElement('vizualizari', $data['vizualizari']);
                 $element1 = $row->appendChild($element1);
