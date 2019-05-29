@@ -73,20 +73,20 @@
     text-align: center;
 }
 
-#about-img {
+.about-img {
     height: 3%;
     vertical-align: bottom;
     width: 3%;
 }
 
-#mission-img {
+.mission-img {
     height: 3%;
     vertical-align: baseline;
     width: 3%;
 }
 
-#phone-img,
-#mail-img {
+.phone-img,
+.mail-img {
     height: 7%;
     vertical-align: middle;
     width: 7%;
@@ -604,27 +604,27 @@
     border: 0;
 }
 
-#line-table {
+.line-table {
     align-items: center;
     display: grid;
     grid-template-columns: 0.25fr 1fr 1fr 1fr 0.7fr;
     padding: 1%;
 }
 
-#line-table:hover {
+.line-table:hover {
     background-color: #e6e6e6;
 }
 
-#two-lines {
+.two-lines {
     display: grid;
     grid-template-rows: 1fr;
 }
 
-#line-table>span {
+.line-table>span {
     font-size: 17px;
 }
 
-#two-lines span:first-child {
+.two-lines span:first-child {
     font-size: 20px;
 }
 

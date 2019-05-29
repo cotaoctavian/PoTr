@@ -17,7 +17,7 @@
     <?php
     if (Session::get('loggedIn') == true): ?>
         <a href="<?php echo URL; ?>../../dashboard/logout" class="sign-in-up-position"> SIGN OUT </a>
-        <a href="../../profile"" class = "sign-in-up-position"> <?php echo Session::get('username') ?> </a>
+        <a href="../../profile" class = "sign-in-up-position"> <?php echo Session::get('username') ?> </a>
         <img src="../../<?php echo Session::get('photo') ?>" alt="" id="profile-picture"/>
     <?php else: ?>
         <a href="../../signin" class="sign-in-up-position"> SIGN IN </a>
@@ -40,7 +40,6 @@
     ?>
 </div>
 
-</div>
 <div class="table-poems">
     <p>#</p>
     <?php

@@ -53,7 +53,7 @@
 
     <h3> Adaugă o descriere! </h3>
     <form action = "profile/description" method="POST" class = "comment-main">
-        <h1 class = "comment-title"> <img src = "/assets/images/comm-icon.png" class = "comment-profile-icon"> Bio! </h1>
+        <h1 class = "comment-title"> <img src = "/assets/images/comm-icon.png" class = "comment-profile-icon" alt = ""> Bio! </h1>
         <input type="text" name="descriere" class ="block-bio">
         <input type = "submit" value = 'Finalizează' class = "comm-button"/>
         <?php if(Session::get('bio')): ?>

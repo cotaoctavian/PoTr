@@ -35,21 +35,25 @@
             care depun timp in aducerea constanta de noi traduceri. Traducerile primesc rating pentru calitatea
             versurilor traduse, iar cele mai bune traduceri vor fi afisate in prezentarea unui poem. In privinta
             celorlalte traduceri va exista posibilitatea de a le vizualiza in subsolul fiecarei strofe alaturi de
-            comentariile si adnotarile aferente.</p>
-        La accesarea site-ului utilizatorii vor putea vizualiza logo-u si un tabel cu cele mai noi poezii traduse,
-        perioada de cand au fost adaugate si numarul de vizualizari acumulate pana in acel moment. </p>
-        In poems, utilizatorii pot vizualiza un tabel cu autori si pentru fiecare un tabel cu poeziile disponibile ale
-        acestuia. Pentru fiecare poezie utilizatorii pot vizualiza traducerea poeziei, comentariile, adnotarile si
-        notele ce au fost adaugate. Daca un utilizator doreste sa adauge o traducere, un comentariu,o adnotare sau sa
-        ofere note acesta are nevoie de un cont pe care il poate creea pe pagina de sign_up. Utilizatorii ce au cont
-        deja au posibilitatea de a distribui poeme pe diverse platforme de blogging. La crearea contului utilizatorului
-        i se va atribui un profil in care isi poate seta o poza si o descriere sugestiva sau isi poate schimba parola.
-        Pentru cei ce au deja cont se pot autentifica pe pagina de login. Cei ce si-au uitat parola, o pot reseta pe
-        pagina de reset_password.</p>
-        In pagina community, utilizatorul poate vizualiza doua topuri, unul cu cei mai activi utilizatori si unul cu
-        cele mai comentate poezii.
+            comentariile si adnotarile aferente.
+            La accesarea site-ului utilizatorii vor putea vizualiza logo-u si un tabel cu cele mai noi poezii traduse,
+            perioada de cand au fost adaugate si numarul de vizualizari acumulate pana in acel moment.
+            In poems, utilizatorii pot vizualiza un tabel cu autori si pentru fiecare un tabel cu poeziile disponibile
+            ale
+            acestuia. Pentru fiecare poezie utilizatorii pot vizualiza traducerea poeziei, comentariile, adnotarile si
+            notele ce au fost adaugate. Daca un utilizator doreste sa adauge o traducere, un comentariu,o adnotare sau
+            sa
+            ofere note acesta are nevoie de un cont pe care il poate creea pe pagina de sign_up. Utilizatorii ce au cont
+            deja au posibilitatea de a distribui poeme pe diverse platforme de blogging. La crearea contului
+            utilizatorului
+            i se va atribui un profil in care isi poate seta o poza si o descriere sugestiva sau isi poate schimba
+            parola.
+            Pentru cei ce au deja cont se pot autentifica pe pagina de login. Cei ce si-au uitat parola, o pot reseta pe
+            pagina de reset_password.
+            In pagina community, utilizatorul poate vizualiza doua topuri, unul cu cei mai activi utilizatori si unul cu
+            cele mai comentate poezii. </p>
         <p> &emsp; &emsp; Pentru dezvoltarea aplicației vor fi utilizate: HTML și CSS pentru front-end, PHP pentru
-            back-end, MySQL pentru baza de date.
+            back-end, MySQL pentru baza de date. </p>
     </section>
     <section>
         <h2> 2. Baza de date a aplicației </h2>
@@ -114,7 +118,7 @@
     <section>
         <h2>4. Diagrame C4 </h2>
         <figure typeOf="sa:image">
-            <img src="assets/uploads/C1-System Software.png" alt="UseCase Diagram">
+            <img src="assets/uploads/C1-System-Software.png" alt="UseCase Diagram">
             <figcaption style="text-align: center;">Fig. 5: Diagrama C1 - Software System</figcaption>
         </figure>
         <figure typeOf="sa:image">
@@ -126,8 +130,8 @@
             <figcaption style="text-align: center;">Fig. 7: Diagrama C3 - Component</figcaption>
         </figure>
 
-        <h2>5. Funcționalitățile aplicației</h2>
         <section>
+            <h2>5. Funcționalitățile aplicației</h2>
             <ul>
                 <li>signup - posibilitatea unui utilizator de a-și face un cont și de a beneficia de anumite
                     funcționalități
@@ -209,13 +213,21 @@
         <section>
             <h2> 7. Github </h2>
             <ol>
-                <li>  S-a creat un repository privat în care s-a introdus în primă fază partea I a proiectului. </li>
-                <li>  S-au creat task-uri in README care s-au bifat imediat ce task-ul a fost efectuat. </li>
-                <li>  S-a folosit .gitignore pentru a nu se da push fisierelor nedorite. </li>
-                <li>  Am lucrat împreună pe branch-ul master, fiecărei modificari locale i s-a dat commit urmat de push. </li>
-                <li>  Fiecare push are un mesaj specific update-ului dat pentru a fi clar ceea ce s-a lucrat si ce contine acel push. </li>
-                <li>  Pentru a evita conflictele s-a avut grijă ca la fiecare push sa dam pull înainte, iar merge-urile au fost efectuate manual cu ajutorul IDE-ului (PhpStorm), în cazurile în care a fost nevoie să dăm merge. </li>
-                <li>  Pe parcursul semestrului fiecare parte a fost adaugata pe git la timp, iar modificarile aduse asupra codului au fost adaugate frecvent, nu s-a introdus totul deodata.
+                <li> S-a creat un repository privat în care s-a introdus în primă fază partea I a proiectului.</li>
+                <li> S-au creat task-uri in README care s-au bifat imediat ce task-ul a fost efectuat.</li>
+                <li> S-a folosit .gitignore pentru a nu se da push fisierelor nedorite.</li>
+                <li> Am lucrat împreună pe branch-ul master, fiecărei modificari locale i s-a dat commit urmat de
+                    push.
+                </li>
+                <li> Fiecare push are un mesaj specific update-ului dat pentru a fi clar ceea ce s-a lucrat si ce
+                    contine acel push.
+                </li>
+                <li> Pentru a evita conflictele s-a avut grijă ca la fiecare push sa dam pull înainte, iar merge-urile
+                    au fost efectuate manual cu ajutorul IDE-ului (PhpStorm), în cazurile în care a fost nevoie să dăm
+                    merge.
+                </li>
+                <li> Pe parcursul semestrului fiecare parte a fost adaugata pe git la timp, iar modificarile aduse
+                    asupra codului au fost adaugate frecvent, nu s-a introdus totul deodata.
                 </li>
             </ol>
 
@@ -247,5 +259,7 @@
                 <li><a href="https://developer.wordpress.org/rest-api/"> REST API </a></li>
             </ol>
         </section>
+    </section>
 </article>
 </body>
+</html>

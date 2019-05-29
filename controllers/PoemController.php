@@ -20,7 +20,9 @@ class Poem extends Controller
     function poezie($var, $var1, $var2)
     {
         //$values = array([$var, $var1]);
-        $this->view->poemData = $this->model->poem($var, $var1, $var2);
+         if($this->model->poem($var, $var1, $var2)){
+             $this->view->poemData = $this->model->poem($var, $var1, $var2);
+        }
         $this->view->pdata = $this->model->getPoem($var, $var1, $var2);
         $this->view->annotations = $this->model->getAnnotations($var, $var1, $var2);
         $this->view->commentaries = $this->model->getCommentaries($var, $var1, $var2);

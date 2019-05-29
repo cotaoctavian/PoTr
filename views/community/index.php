@@ -64,5 +64,4 @@
     ?>
 </div>
 </body>
-</head>
 </html>

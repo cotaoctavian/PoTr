@@ -34,6 +34,7 @@
 </nav>
 
 <!-- MENU -->
+<?php if($this->poemData): ?>
 <h1 class="title"> <?php print_r($this->poemData->nume_autor) ?> </h1>
 <div class="language-content">
     <h3> Language: </h3>
@@ -482,6 +483,7 @@
 
     </div>
 </div>
+<?php endif; ?>
 
 <hr class="hr1">
 
@@ -494,6 +496,7 @@
             <input class="comment-box" name="comment" placeholder="Write something.." type="text"/>
             <input type="submit" value="Comment!" class="comm-button"/>
         </form>
+
 
         <h1 class="comment-title"><img src="/assets/images/comments.png" class="comment-icon" alt=""> Comments! </h1>
         <div class="comment-section">
