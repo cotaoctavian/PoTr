@@ -18,7 +18,7 @@
     <a class="a1" href="../../../../index"> Poem translater </a>
     <?php if (Session::get('loggedIn') == true): ?>
         <a href="<?php echo URL; ?>../../../../dashboard/logout" class="sign-in-up-position"> SIGN OUT </a>
-        <a href="../../../../profile" " class = "sign-in-up-position "> <?php echo Session::get('username') ?> </a>
+        <a href="../../../../profile"   class = "sign-in-up-position "> <?php echo Session::get('username') ?> </a>
         <img src="../../../../<?php echo Session::get('photo') ?>" alt="" id="profile-picture"/>
     <?php else: ?>
         <a href="../../../../signin" class="sign-in-up-position"> SIGN IN </a>
@@ -344,7 +344,7 @@
                                      <span >';
                                     if (Session::get('loggedIn') == true) {
                                         if ($this->userInfo->admin) {
-                                            echo '<form action = action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class = "go-right">
+                                            echo '<form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class = "go-right">
                                                                 <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-x" />
                                                   </form>';
                                         }
