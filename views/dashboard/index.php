@@ -59,9 +59,9 @@
         $cnt=1;
         $k=0;
         for($k=0;$k<5;$k++) {
-            echo ' <a id="line-table">';
+            echo ' <a class="line-table">';
             echo '<span><strong>' . $cnt . '</strong> </span>';
-            echo '<div id="two-lines">';
+            echo '<div class="two-lines">';
             echo '<span><strong>' . $title->item($k)->nodeValue . '</strong> </span>';
             echo '<span>' . $auth->item($k)->nodeValue . '</span>';
             echo ' </div>';
