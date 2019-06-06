@@ -6,3 +6,4 @@ require_once 'APIDatabase.php';
 require_once 'Application.php';
 require_once 'ControllerAPI.php';
 require_once 'APIModel.php';
+require_once 'APIView.php';

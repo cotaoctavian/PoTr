@@ -17,7 +17,8 @@ class Dashboard extends Controller
         }
     }
     function index()
-    {     $this->view->rssData=$this->model->rssTable();
+    {
+        $this->view->rssData=$this->model->rssTable();
         $this->view->render('dashboard/index');
     }
 
