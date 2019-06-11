@@ -7,11 +7,11 @@ class Poem_Model extends Model {
         parent::__construct();
     }
 
-    public function poem($var, $var1, $var2){ //Poem romana.
+    public function poem($author_id, $title, $language){ //Poem romana.
         $data = [
-            ':title' => $var1,
-            ':id' => $var,
-            ':lang' => $var2,
+            ':title' => $title,
+            ':id' => $author_id,
+            ':lang' => $language,
         ];
         $sql = "SELECT p.poezie, p.titlu AS titlu_ro, c.nume AS nume_autor , c.id AS autor_id, d.titlu AS titlu_trad FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
@@ -22,10 +22,14 @@ class Poem_Model extends Model {
         $stmt->execute($data);
 
         $array = [
-            ':lang' => $var2
+            ':lang' => $language,
+            ':titlu' => $title
         ];
 
-        $st=$this->db->prepare("UPDATE strofa_tradusa SET vizualizari = vizualizari + 1 WHERE limba = :lang");
+        $st=$this->db->prepare("UPDATE strofa_tradusa s 
+                                          JOIN poezie_tradusa p ON p.id = s.id_poezie_tradusa
+                                          JOIN poezie_romana a ON a.id = p.id_poezie_romana SET s.vizualizari = s.vizualizari + 1
+                                          WHERE s.limba = :lang AND a.titlu = :titlu");
         $st->execute($array);
 
         $result = $stmt->fetch(PDO::FETCH_OBJ);
@@ -39,12 +43,12 @@ class Poem_Model extends Model {
         }
     }
 
-    public function getPoemInfo($var, $var1, $var2){
+    public function getPoemInfo($author_id, $title, $language){
         $data = [
-            ':title' => $var1,
-            ':id' => $var,
-            ':lang' => $var2,
-            ':langs' => $var2,
+            ':title' => $title,
+            ':id' => $author_id,
+            ':lang' => $language,
+            ':langs' => $language,
         ];
         $sql = "SELECT b.strofa, b.nr_strofa, b.id AS id_strofa FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
@@ -67,12 +71,12 @@ class Poem_Model extends Model {
         }
     }
 
-    public function getPoem($var, $var1, $var2){ //Strofe traduse.
+    public function getPoem($author_id, $title, $language){ //Strofe traduse.
         $data = [
-            ':title' => $var1,
-            ':id' => $var,
-            ':lang' => $var2,
-            ':langs' => $var2,
+            ':title' => $title,
+            ':id' => $author_id,
+            ':lang' => $language,
+            ':langs' => $language,
         ];
         $sql = "SELECT p.poezie, p.titlu AS titlu_ro , c.nume AS nume_autor , c.id AS autor_id , b.strofa, b.nr_strofa, b.rating, u.nume AS username , u.id AS user_id, d.id AS id_poezie_tradusa, d.titlu AS titlu_trad, d.limba, b.id AS id_strofa FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
@@ -96,12 +100,12 @@ class Poem_Model extends Model {
         }
     }
 
-    public function getAnnotations($var, $var1, $var2){ //Adnotari per traducere.
+    public function getAnnotations($author_id, $title, $language){ //Adnotari per traducere.
         $data = [
-            ':title' => $var1,
-            ':id' => $var,
-            ':lang' => $var2,
-            ':langs' => $var2,
+            ':title' => $title,
+            ':id' => $author_id,
+            ':lang' => $language,
+            ':langs' => $language,
         ];
         $sql = "SELECT u.nume AS username, adn.id, adn.text AS adnotare, adn.id_strofa_tradusa FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
@@ -124,12 +128,12 @@ class Poem_Model extends Model {
         }
     }
 
-    public function getCommentaries($var, $var1, $var2){ //Comentarii per traducere.
+    public function getCommentaries($author_id, $title, $language){ //Comentarii per traducere.
         $data = [
-            ':title' => $var1,
-            ':id' => $var,
-            ':lang' => $var2,
-            ':langs' => $var2,
+            ':title' => $author_id,
+            ':id' => $title,
+            ':lang' => $language,
+            ':langs' => $language,
         ];
         $sql = "SELECT u.nume AS username, comm.descriere AS comentariu , comm.id, comm.id_strofa_tradusa FROM POEZIE_ROMANA p 
                 JOIN autor c ON p.id_autor = c.id 
@@ -154,10 +158,10 @@ class Poem_Model extends Model {
 
     }
 
-    public function poem_comm($var, $var1){ //Comentarii per poezie.
+    public function poem_comm($author_id, $title){ //Comentarii per poezie.
         $data = [
-            ':id' => $var,
-            ':title' => $var1
+            ':id' => $author_id,
+            ':title' => $title
         ];
 
         $sql = "SELECT c.nume, p.text, p.id FROM POEZIE_ROMANA b
@@ -179,11 +183,11 @@ class Poem_Model extends Model {
         }
     }
 
-    public function addComm($text, $var ,$var1, $var2, $var3){ //Adaugare comentarii per poezie.
+    public function addComm($text, $user_id ,$author_id, $title, $language){ //Adaugare comentarii per poezie.
 
         $data = [
-            ':id_author' => $var1,
-            ':title' => $var2,
+            ':id_author' => $author_id,
+            ':title' => $title,
         ];
 
         $sql = "SELECT p.id FROM POEZIE_ROMANA p 
@@ -196,7 +200,7 @@ class Poem_Model extends Model {
 
         $array = [
             ':id_poezie_romana'=> $stmt->id,
-            ':id_user' => $var,
+            ':id_user' => $user_id,
             ':text' => $text,
         ];
 
@@ -214,7 +218,7 @@ class Poem_Model extends Model {
 
         $count = $sth->rowCount();
         if ($count > 0) {
-            header('location:../../../poezie/'.$var1.'/'.strtolower($var2).'/'.$var3);
+            header('location:../../../poezie/'.$author_id.'/'.strtolower($title).'/'.$language);
             return $sth->fetchAll();
         }
         else {

@@ -887,6 +887,10 @@ body {
     div.table{
         width: 30%;
     }
+    div.comment-main{
+        left:5%;
+        width:90%;
+    }
 }
 
 @media screen and (max-width: 870px) {
@@ -912,6 +916,45 @@ body {
 
     #two-lines > span:nth-child(1){
         font-size:90%;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    #banner{
+        font-size:40px;
+    }
+
+    #h5{
+        font-size:15px;
+    }
+
+    nav.menu-bar > a {
+        font-size:15px;
+        padding-top:2%;
+    }
+
+    #main-table{
+        width:80%;
+    }
+
+    #contact {
+        width:100%;
+        font-size:13px;
+    }
+
+    #about-us-container{
+        width:90%;
+    }
+
+    div.poem-container{
+        flex-direction: column;
+        align-items:stretch;
+    }
+
+    div.comment-main{
+        left:5%;
+        width:90%;
     }
 }
 

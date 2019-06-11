@@ -17,19 +17,17 @@ class Poem extends Controller
         $this->view->render('poem/index');
     }
 
-    function poezie($var, $var1, $var2)
+    function poezie($author_id, $title, $language)
     {
         //$values = array([$var, $var1]);
-         if($this->model->poem($var, $var1, $var2)){
-             $this->view->poemData = $this->model->poem($var, $var1, $var2);
-        }
-        $this->view->pdata = $this->model->getPoem($var, $var1, $var2);
-        $this->view->annotations = $this->model->getAnnotations($var, $var1, $var2);
-        $this->view->commentaries = $this->model->getCommentaries($var, $var1, $var2);
-        $this->view->poemInfo = $this->model->getPoemInfo($var, $var1, $var2);
-        $this->view->commData = $this->model->poem_comm($var, $var1);
+        $this->view->poemData = $this->model->poem($author_id, $title, $language);
+        $this->view->pdata = $this->model->getPoem($author_id, $title, $language);
+        $this->view->annotations = $this->model->getAnnotations($author_id, $title, $language);
+        $this->view->commentaries = $this->model->getCommentaries($author_id, $title, $language);
+        $this->view->poemInfo = $this->model->getPoemInfo($author_id, $title, $language);
+        $this->view->commData = $this->model->poem_comm($author_id, $title);
         //$this->view->authorData = $values;
-        $this->view->language = $var2;
+        $this->view->language = $language;
         Session::init();
         $logged = Session::get('loggedIn');
         if($logged)  {
@@ -38,7 +36,7 @@ class Poem extends Controller
         }
         if (isset($_POST['comment']) && !empty($_POST['comment']) && !ctype_space($_POST['comment'])) {
             if ($logged) {
-                $this->model->addComm($_POST['comment'], Session::get('id'), $var, $var1, $var2);
+                $this->model->addComm($_POST['comment'], Session::get('id'), $author_id, $title, $language);
             } else {
                 return 0;
             }

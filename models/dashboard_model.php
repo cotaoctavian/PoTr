@@ -36,7 +36,7 @@ class Dashboard_Model extends Model {
                 $result = $date_b - $date_a;
                 $days    = abs(round($result / 86400));
                 $hours   = floor(($result - ($days * 86400)) / 3600);
-                $hrs= floor(abs($result / 3600));
+                $hrs= floor(abs($result / 3600) / 60);
                 $minutes = floor(($result - ($days * 86400) - ($hours * 3600))/60);
                 $seconds = floor(($result - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
                 $element3 = $dom->createElement('data', $days . ' days ' . $hrs . ' hours ' . $minutes . ' minutes ');
