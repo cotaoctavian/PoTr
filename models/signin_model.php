@@ -22,7 +22,7 @@ class SignIn_Model extends Model
             $sth = $this->db->prepare("SELECT ID, photo, email, bio FROM user WHERE nume=:nume AND parola=:parola");
             $sth->execute(array(
                 ':nume' => $_POST['username'],
-                ':parola' => $_POST['password']
+                ':parola' =>md5( $_POST['password'])
             ));
 
             //$data = $sth->fetchAll();
