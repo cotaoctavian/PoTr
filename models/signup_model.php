@@ -44,7 +44,7 @@ class SignUp_Model extends Model
                         $sth = $this->db->prepare("INSERT INTO  user(nume, parola, email,photo,bio) values(:nume,:parola,:email,:photo,:bio)");
                         $sth->execute(array(
                             ':nume' => $_POST['username'],
-                            ':parola' => $_POST['parola'],
+                            ':parola' => md5($_POST['parola']),
                             ':email' => $_POST['email'],
                             ':photo' => null,
                             ':bio' => null
