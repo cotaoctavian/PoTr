@@ -50,7 +50,7 @@ class AnnotationModel extends APIModel
         }
     }
 
-    function deleteAnnotation($info){
+    function updateAnnotation($info){
         $data = [
             ":id" => $info->id,
             ":text" => $info->text,
@@ -72,6 +72,29 @@ class AnnotationModel extends APIModel
             return json_encode(array('message' => $message ));
         }
     }
+
+    function deleteAnnotation($info){
+        $data = [
+            ":id" => $info->id,
+        ];
+
+        $sql = "DELETE FROM Adnotari WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($data);
+
+        $count = $stmt->rowCount();
+        if($count > 0){
+            http_response_code(200);
+            return json_encode(array('message' => "Adnotare stearsa cu succes!"));
+        }
+        else {
+            http_response_code(404);
+
+            $message = "Eliminarea adnotarii a esuat!";
+            return json_encode(array('message' => $message ));
+        }
+    }
+
 
 
 

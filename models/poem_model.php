@@ -154,8 +154,6 @@ class Poem_Model extends Model {
         else{
             return 0;
         }
-
-
     }
 
     public function poem_comm($author_id, $title){ //Comentarii per poezie.
@@ -168,7 +166,8 @@ class Poem_Model extends Model {
                 JOIN autor a ON b.id_autor = a.id
                 JOIN COMENTARII_POEZIE p ON p.id_poezie_romana = b.id
                 JOIN user c ON c.id = p.id_user
-                WHERE a.id = :id AND b.titlu = :title";
+                WHERE a.id = :id AND b.titlu = :title
+                ORDER BY p.id DESC";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($data);
 

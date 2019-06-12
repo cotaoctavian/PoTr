@@ -52,7 +52,7 @@ class Annotation extends ControllerAPI
         if($_SERVER['REQUEST_METHOD'] == 'PUT') {
             $body = file_get_contents('php://input');
             $info = json_decode($body);
-            echo $this->model->deleteAnnotation($info);
+            echo $this->model->updateAnnotation($info);
         }else {
             $message = "INVALID REQUEST METHOD";
             echo json_encode(array('message' => $message));
