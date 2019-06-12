@@ -36,7 +36,7 @@ class SignUp_Model extends Model
                 ':email' => $_POST['email'],
                 ':nume' => $_POST['username'],
             ));
-            $result1 = $sql->fetch(PDO::FETCH_OBJ);
+             $sql->fetch(PDO::FETCH_OBJ);
             $count1 = $sql->rowCount();
             if ($count1 == 0) {
                 if ((preg_match('/\b@yahoo.com/', $_POST['email'])) || (preg_match('/\b@gmail.com/', $_POST['email']))) {
@@ -49,7 +49,7 @@ class SignUp_Model extends Model
                             ':photo' => null,
                             ':bio' => null
                         ));
-                        $result = $sth->fetch(PDO::FETCH_OBJ);
+                         $sth->fetch(PDO::FETCH_OBJ);
                         $count = $sth->rowCount();
                         if ($count > 0) {
                             if (isset($email)) {

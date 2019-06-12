@@ -35,7 +35,7 @@
 <div class="table-active-users">
     <span></span>
     <span><strong>Username</strong></span>
-    <span><strong>Translates</strong></span>
+    <span><strong>Translations</strong></span>
     <?php
     $cnt=1;
     foreach($this->userData as $var){

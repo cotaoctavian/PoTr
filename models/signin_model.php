@@ -10,13 +10,13 @@ class SignIn_Model extends Model
 
     public function login()
     {
-        $err = 0;
+        $erori = 0;
         if (!isset($_POST['username']) || strlen($_POST['username']) == 0) {
-            $err = 1;
+            $erori = 1;
         } elseif (!isset($_POST['password']) || strlen($_POST['password']) == 0) {
-            $err = 1;
+            $erori = 1;
         }
-        if ($err == 1) {
+        if ($erori == 1) {
             echo "Toate campurile sunt obligatorii!";
         } else {
             $sth = $this->db->prepare("SELECT ID, photo, email, bio FROM user WHERE nume=:nume AND parola=:parola");
@@ -25,8 +25,7 @@ class SignIn_Model extends Model
                 ':parola' =>md5( $_POST['password'])
             ));
 
-            //$data = $sth->fetchAll();
-            // print_r($data);
+
             $result = $sth->fetch(PDO::FETCH_OBJ);
 
             $count = $sth->rowCount();

@@ -11,7 +11,6 @@ class Reset_Model extends Model
     function changePassword()
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
         $new_pass= '';
         for ($i = 0; $i < 10; $i++) {
             $new_pass .= $characters[rand(0,50)];
@@ -39,7 +38,7 @@ class Reset_Model extends Model
                     $count = $sth->rowCount();
                     if ($count > 0)
                         if (isset($email)) {
-                            if (mail($email, $subject, $message)) {
+                            if (mail($email, $subject, $message,$headers)) {
                                 header('location:../signin');
                             } else {
                                 echo "Eroare la resetare parola!";

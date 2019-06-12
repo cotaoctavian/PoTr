@@ -12,6 +12,8 @@ class View {
     public $commentaries;
     public $poemInfo;
     public $rateData;
+    public $userData;
+    public $commentData;
 
     public function render($name){
         require 'views/' . $name . '.php';

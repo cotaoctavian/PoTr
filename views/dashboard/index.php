@@ -51,23 +51,23 @@
         <?php
         $doc=new DomDocument;
         $doc->load('rss.xml');
-        $title = $doc->getElementsByTagName('titlu');
+        $titlu = $doc->getElementsByTagName('titlu');
         $utilizator=$doc->getElementsByTagName('utilizator');
-        $auth = $doc->getElementsByTagName('nume');
-        $dat = $doc->getElementsByTagName('data');
-        $seen = $doc->getElementsByTagName('vizualizari');
+        $autor = $doc->getElementsByTagName('nume');
+        $data = $doc->getElementsByTagName('data');
+        $vazut = $doc->getElementsByTagName('vizualizari');
         $cnt=1;
         $k=0;
         for($k=0;$k<5;$k++) {
             echo ' <a class="line-table">';
             echo '<span><strong>' . $cnt . '</strong> </span>';
             echo '<div class="two-lines">';
-            echo '<span><strong>' . $title->item($k)->nodeValue . '</strong> </span>';
-            echo '<span>' . $auth->item($k)->nodeValue . '</span>';
+            echo '<span><strong>' . $titlu->item($k)->nodeValue . '</strong> </span>';
+            echo '<span>' . $autor->item($k)->nodeValue . '</span>';
             echo ' </div>';
             echo '<span>' . $utilizator->item($k)->nodeValue . '</span>';
-            echo '<span> <img src="/assets/images/time.png" class="main-img" alt="">' . $dat->item($k)->nodeValue . ' </span>';
-            echo '<span><img src="/assets/images/seen.png" class="main-img" alt="">' . $seen->item($k)->nodeValue . ' </span>';
+            echo '<span> <img src="/assets/images/time.png" class="main-img" alt="">' . $data->item($k)->nodeValue . ' </span>';
+            echo '<span><img src="/assets/images/seen.png" class="main-img" alt="">' . $vazut->item($k)->nodeValue . ' </span>';
             $cnt++;
             echo '</a>';
         }

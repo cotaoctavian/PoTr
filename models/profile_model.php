@@ -79,26 +79,23 @@ class Profile_Model extends Model {
         if ($erori == 1) {
             echo "Toate campurile sunt obligatorii!";
         } else {
-            if ((preg_match('/\b@yahoo.com/', $email)) || (preg_match('/\b@gmail.com/', $email))) {
                 if (strcmp($_POST['parola'], $_POST['pass']) == 0 && strlen($_POST['parola']) > 5) {
                     $sth = $this->db->prepare("UPDATE user set parola=:parola WHERE email=:email");
                     $sth->execute(array(
-                        ':parola' => $_POST['parola'],
+                        ':parola' => md5($_POST['parola']),
                         ':email' => $email
                     ));
 
                     $count = $sth->rowCount();
                     if ($count > 0)
                         if (isset($email)) {
-                            if (mail($email, $subject, $message)) {
+                            if (mail($email, $subject, $message,$headers)) {
                                 header('location:../signin');
                             } else {
                                 echo "Eroare la resetare parola!";
                             }
                         } else echo "Eroare la resetare parola!";
                 } else echo "Parolele nu se potrivesc!";
-            } else echo "Eroare!";
-
         }
     }
 
