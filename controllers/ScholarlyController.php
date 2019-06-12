@@ -7,6 +7,7 @@ class Scholarly extends Controller
     {
         $this->view = new View();
     }
+
     function index()
     {
         $this->view->render('scholarly/index');

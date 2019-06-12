@@ -26,11 +26,11 @@ class Index_Model extends Model {
                 $row = $dom->createElement('row');
                 $row = $root->appendChild($row);
                 $element = $dom->createElement('titlu', $data['titlu']);
-                $element = $row->appendChild($element);
+                $row->appendChild($element);
                 $element4 = $dom->createElement('utilizator', $data['utiliz']);
-                $element4 = $row->appendChild($element4);
+                $row->appendChild($element4);
                 $element2 = $dom->createElement('nume', $data['nume']);
-                $element2 = $row->appendChild($element2);
+                $row->appendChild($element2);
                 $timestamp = time();
                 $date_a = strtotime($data['data_adaugarii']);
                 $date_b = strtotime(date("F d Y h:i:s", $timestamp));
@@ -39,11 +39,10 @@ class Index_Model extends Model {
                 $hours   = floor(($result - ($days * 86400)) / 3600);
                 $hrs= floor(abs($result / 3600) / 60);
                 $minutes = floor(($result - ($days * 86400) - ($hours * 3600))/60);
-                $seconds = floor(($result - ($days * 86400) - ($hours * 3600) - ($minutes*60)));
                 $element3 = $dom->createElement('data', $days . ' days ' . $hrs . ' hours ' . $minutes . ' minutes ');
-                $element3 = $row->appendChild($element3);
+                $row->appendChild($element3);
                 $element1 = $dom->createElement('vizualizari', $data['vizualizari']);
-                $element1 = $row->appendChild($element1);
+                $row->appendChild($element1);
                 $cnt++;
             }
           else break;

@@ -1,12 +1,15 @@
 <?php
 
-class AboutUs extends Controller{
+class AboutUs extends Controller
+{
 
-    function __construct(){
+    function __construct()
+    {
         $this->view = new View();
     }
 
-    function index(){
+    function index()
+    {
         $this->view->render('about/index');
     }
 
