@@ -9,7 +9,7 @@ class View {
     public $language;
     public $pdata;
     public $annotations;
-    public $commentaries;
+    public $comm_data;
     public $poemInfo;
     public $rateData;
     public $userData;

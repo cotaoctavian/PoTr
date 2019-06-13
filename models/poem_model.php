@@ -128,10 +128,10 @@ class Poem_Model extends Model {
         }
     }
 
-    public function getCommentaries($author_id, $title, $language){ //Comentarii per traducere.
+    public function commTranslations($author_id, $title, $language){ //Comentarii per traducere.
         $data = [
-            ':title' => $author_id,
-            ':id' => $title,
+            ':title' => $title,
+            ':id' => $author_id,
             ':lang' => $language,
             ':langs' => $language,
         ];

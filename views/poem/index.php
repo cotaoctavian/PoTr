@@ -9,8 +9,6 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src = "/assets/js/getcomments.js"> </script>
-    <script type="text/javascript" src = "/assets/js/postcomment.js"> </script>
 
 </head>
 
@@ -70,24 +68,24 @@
                     foreach ($this->pdata as $row) {
                         if ($last_value == $row->nr_strofa && $flag == 0) {
                             echo '
-            <div class="accordion">
-                <div>
-                    <input type="checkbox" id="check-' . $cnt . '" />  
-                    <label for="check-' . $cnt . '" class="verse"> 
-                        <span>';
+                            <div class="accordion">
+                                <div>
+                                    <input type = "checkbox" id = "check-' . $cnt . '" />
+                                        <label for="check-' . $cnt . '" class="verse" >
+                                           <span >';
                             if (Session::get('loggedIn') == true) {
                                 if ($this->userInfo->admin) {
-                                    echo ' <form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class = "go-right">
-                                             <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-x" />
-                                        </form>';
+                                    echo '<form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class ="go-x">
+                                                                                            <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x" />
+                                                                                        </form>';
                                 }
                             }
                             $cnt++;
                             echo $row->strofa;
-                            echo '</span > 
-                        </label >
+                                    echo '</span >
+                                    </label >';
 
-                        <div class="verse-details" >';
+                            echo '<div class="verse-details" >';
                             if (Session::get('loggedIn') == true) {
                                 echo '<div class="comment-form" >
                                 <span > <img src = "/assets/images/adnotation.png" class="adnotation-icon" alt = "" > <strong > Annotation: </strong > </span >
@@ -166,8 +164,8 @@
                             echo '<div >
                                     <div class="grid" >';
                             $last_comm_id = -1;
-                            if ($this->commentaries) {
-                                foreach ($this->commentaries as $val) {
+                            if ($this->comm_data) {
+                                foreach ($this->comm_data as $val) {
                                     if ($val->id_strofa_tradusa == $last_id && $last_comm_id != $val->id) {
                                         $last_comm_id = $val->id;
                                         echo "<div >";
@@ -199,8 +197,8 @@
                                         <span > <img src = "/assets/images/comm-icon.png" class="adnotation-icon" alt = "" > <strong > Add your translation! </strong > </span >
                                         <textarea rows = "4" cols = "50" name = "translate" class="comm-box-accordion" > </textarea >
                                         <button type = "submit" class="comm-button" > Post! </button >
-                                    </div >
                                     </form>
+                                    </div >
                                     <br >';
                             }
                             echo '</div >';
@@ -305,8 +303,8 @@
                             echo '<div >
                                     <div class="grid" >';
                             $last_comm_id = -1;
-                            if ($this->commentaries) {
-                                foreach ($this->commentaries as $val) {
+                            if ($this->comm_data) {
+                                foreach ($this->comm_data as $val) {
                                     if ($val->id_strofa_tradusa == $last_id && $last_comm_id != $val->id) {
                                         $last_comm_id = $val->id;
                                         echo "<div >";
@@ -438,8 +436,8 @@
                             echo '<div >
                                     <div class="grid" >';
                             $last_comm_id = -1;
-                            if ($this->commentaries) {
-                                foreach ($this->commentaries as $val) {
+                            if ($this->comm_data) {
+                                foreach ($this->comm_data as $val) {
                                     if ($val->id_strofa_tradusa == $last_id && $last_comm_id != $val->id) {
                                         $last_comm_id = $val->id;
                                         echo "<div >";
@@ -494,7 +492,7 @@
 <!--
 <script>
     interval = setInterval(function {
-        getComments(<?php /*$this->poemData->autor_id */?>, <?php /*$this->poemData->titlu_ro */?>, <?php /*$this->language */?>)
+        getComments(<?php /*$this->poemData->autor_id */ ?>, <?php /*$this->poemData->titlu_ro */ ?>, <?php /*$this->language */ ?>)
     }, 10000);
 </script>-->
 
@@ -506,7 +504,8 @@
         <form action="../../../poezie/<?php echo $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language ?>"
               method="POST">
             <input class="comment-box" name="comment" placeholder="Write something.." type="text"/>
-            <input type="submit" value="Comment!" class="comm-button" onclick = "getComments(<?php $this->poemData->autor_id ?>, <?php $this->poemData->titlu_ro ?>, <?php $this->language ?>)" />
+            <input type="submit" value="Comment!" class="comm-button"
+                   onclick="getComments(<?php $this->poemData->autor_id ?>, <?php $this->poemData->titlu_ro ?>, <?php $this->language ?>)"/>
         </form>
 
 

@@ -19,14 +19,12 @@ class Poem extends Controller
 
     function poezie($author_id, $title, $language)
     {
-        //$values = array([$var, $var1]);
         $this->view->poemData = $this->model->poem($author_id, $title, $language);
         $this->view->pdata = $this->model->getPoem($author_id, $title, $language);
         $this->view->annotations = $this->model->getAnnotations($author_id, $title, $language);
-        $this->view->commentaries = $this->model->getCommentaries($author_id, $title, $language);
+        $this->view->comm_data = $this->model->commTranslations($author_id, $title, $language);
         $this->view->poemInfo = $this->model->getPoemInfo($author_id, $title, $language);
         $this->view->commData = $this->model->poem_comm($author_id, $title);
-        //$this->view->authorData = $values;
         $this->view->language = $language;
         Session::init();
         $logged = Session::get('loggedIn');
