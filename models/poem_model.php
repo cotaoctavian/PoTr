@@ -419,7 +419,7 @@ class Poem_Model extends Model {
             false,
             $context
         );
-        $response = json_decode($response);
+        json_decode($response);
         header('location:../../../../../poem/poezie/'.$author_id.'/'.$title.'/'.$language);
     }
 
