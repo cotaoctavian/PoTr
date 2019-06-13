@@ -34,13 +34,11 @@ class Dashboard_Model extends Model
                 $row->appendChild($element2);
                 $timestamp = time();
                 $date_a = strtotime($data['data_adaugarii']);
-                $date_b = strtotime(date("F d Y h:i:s", $timestamp));
-                $result = $date_b - $date_a;
+                $result = $timestamp - $date_a;
                 $days = abs(round($result / 86400));
                 $hours = floor(($result - ($days * 86400)) / 3600);
-                $hrs = floor(abs($result / 3600) / 60);
+                $hrs = floor(abs($result / 3600));
                 $minutes = floor(($result - ($days * 86400) - ($hours * 3600)) / 60);
-                $seconds = floor(($result - ($days * 86400) - ($hours * 3600) - ($minutes * 60)));
                 $element3 = $dom->createElement('data', $days . ' days ' . $hrs . ' hours ' . $minutes . ' minutes ');
                 $row->appendChild($element3);
                 $element1 = $dom->createElement('vizualizari', $data['vizualizari']);
