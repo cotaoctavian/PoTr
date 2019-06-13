@@ -68,24 +68,23 @@
                     foreach ($this->pdata as $row) {
                         if ($last_value == $row->nr_strofa && $flag == 0) {
                             echo '
-                            <div class="accordion">
-                                <div>
-                                    <input type = "checkbox" id = "check-' . $cnt . '" />
-                                        <label for="check-' . $cnt . '" class="verse" >
-                                           <span >';
+            <div class="accordion">
+                <div>
+                    <input type="checkbox" id="check-' . $cnt . '" />  
+                    <label for="check-' . $cnt . '" class="verse"> ';
                             if (Session::get('loggedIn') == true) {
                                 if ($this->userInfo->admin) {
-                                    echo '<form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class ="go-x">
-                                                                                            <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-go-x" />
-                                                                                        </form>';
+                                    echo ' <form action = "../../../deleteTranslation/' . $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language . '/' . $row->id_strofa . '" method = "POST" class = "go-right">
+                                             <input type="image" src="/assets/images/x.png" alt="Submit Form" class = "img-x" />
+                                        </form>';
                                 }
                             }
                             $cnt++;
                             echo $row->strofa;
-                                    echo '</span >
-                                    </label >';
+                            echo '
+                        </label >
 
-                            echo '<div class="verse-details" >';
+                        <div class="verse-details" >';
                             if (Session::get('loggedIn') == true) {
                                 echo '<div class="comment-form" >
                                 <span > <img src = "/assets/images/adnotation.png" class="adnotation-icon" alt = "" > <strong > Annotation: </strong > </span >
@@ -492,7 +491,7 @@
 <!--
 <script>
     interval = setInterval(function {
-        getComments(<?php /*$this->poemData->autor_id */ ?>, <?php /*$this->poemData->titlu_ro */ ?>, <?php /*$this->language */ ?>)
+        getComments(<?php /*$this->poemData->autor_id */?>, <?php /*$this->poemData->titlu_ro */?>, <?php /*$this->language */?>)
     }, 10000);
 </script>-->
 
@@ -504,8 +503,7 @@
         <form action="../../../poezie/<?php echo $this->poemData->autor_id . '/' . strtolower($this->poemData->titlu_ro) . '/' . $this->language ?>"
               method="POST">
             <input class="comment-box" name="comment" placeholder="Write something.." type="text"/>
-            <input type="submit" value="Comment!" class="comm-button"
-                   onclick="getComments(<?php $this->poemData->autor_id ?>, <?php $this->poemData->titlu_ro ?>, <?php $this->language ?>)"/>
+            <input type="submit" value="Comment!" class="comm-button" onclick = "getComments(<?php $this->poemData->autor_id ?>, <?php $this->poemData->titlu_ro ?>, <?php $this->language ?>)" />
         </form>
 
 
