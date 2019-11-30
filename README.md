@@ -1,18 +1,1 @@
-# PoTr-Poem-Translater
 
-  ### TO DO LIST:
-  - [x] MENU
-  - [x] PAGINA PRINCIPALA
-  - [x] LISTA POEME (TABEL)
-  - [x] DESPRE NOI
-  - [x] SIGN IN
-  - [x] SIGN UP
-  - [x] TABEL RSS
-  - [x] TABEL COMENTARII
-  - [x] TABEL CEI MAI ACTIVI USERI
-  - [x] TABEL CELE MAI COMENTATE POEZII
-  - [x] TABELE POEME (TRADUS / NETRADUS)
-  - [x] RESPONSIVE
- 
-  
-  
